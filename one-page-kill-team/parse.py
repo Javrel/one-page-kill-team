@@ -190,13 +190,11 @@ def extract_operative_name_and_keywords(operative_block):
 
     # ✅ Normalize newlines and remove extra spaces
     lines = [line.strip() for line in operative_block.splitlines() if line.strip()]
-    print(len(operative_block))
-    print(lines)
 
     # ✅ Find the Keywords Line (uppercase, comma-separated)
     keyword_index = None
     for i, line in enumerate(lines):
-        if re.match(r"^[A-Z ,]+$", line) and "," in line:  # Ensure it contains uppercase keywords
+        if re.match(r"^[A-Z ,\-]+$", line) and "," in line:  # Ensure it contains uppercase keywords
             keyword_index = i
 
     if keyword_index is None:
@@ -398,17 +396,25 @@ def extract_faction_equipment(text):
     #         - A line with 'MARKER/TOKEN GUIDE'
     #         - A line with 'UPDATE LOG' (in case your file uses 'FELLGOR RAVAGERS: UPDATE LOG' or similar)
     #         - OR the end of the entire text ($)
-    pattern = (
-        r"FACTION EQUIPMENT\s*\n"          # 'FACTION EQUIPMENT' + newline
-        r"(.*?)(?=\nMARKER/TOKEN GUIDE|\n.*UPDATE LOG|$)"  # until next marker or update log or end
+
+    print("********************************************")
+    for idx, line in enumerate(text.splitlines()):
+        if 685 <= idx <= 716:
+            print(idx, repr(line), len(line))
+
+    pattern = re.compile(
+        r"FACTION EQUIPMENT\s*\n"
+        r"(.*?)(?=\nMARKER/TOKEN GUIDE|\nUPDATE LOG|$)",
+        flags=re.DOTALL
     )
 
-    match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+    match = re.search(pattern, text)
     if match:
         equipment_text = match.group(1).strip()
+        print(f"equip: {equipment_text}")
         return parse_equipment_to_list(equipment_text)
     else:
-        return ""  # No equipment section found
+        return print("No equipment match...")
 
 
 def parse_equipment_to_list(equipment_text):
@@ -469,29 +475,29 @@ if __name__ == "__main__":
         team_name = extract_team_name(text)
 
         print(f"🛡️ Team Name: {team_name}")
-        if team_name == "ANGELS OF DEATH":
-            # ✅ Remove unwanted footers like "ANGELS OF DEATH » FACTION RULES"
-            cleaned_lines = [line for line in text.split("\n") if f"{team_name} »" not in line and len(line) > 1]
-            text = "\n".join(cleaned_lines)
 
-            # ✅ Extract Data
-            output = {"name": team_name}
-            output["faction_rules"] = extract_faction_rules(text, team_name)
-            output["strategy_ploys"] = extract_strategy_ploys(text)
-            output["firefight_ploys"] = extract_firefight_ploys(text)
-            output["operatives"] = extract_operative_blocks(text)
-            output["faction_equipmebt"] = extract_faction_equipment(text)
+        # ✅ Remove unwanted footers like "ANGELS OF DEATH » FACTION RULES"
+        cleaned_lines = [line for line in text.split("\n") if f"{team_name} »" not in line and len(line) > 1]
+        text = "\n".join(cleaned_lines)
 
-            # ✅ Save raw text (optional)
-            text_output_path = os.path.join("../data", f"{team_name}.txt")
-            with open(text_output_path, "w", encoding="utf-8") as text_file:
-                text_file.write(text)
+        # ✅ Extract Data
+        output = {"name": team_name}
+        output["faction_rules"] = extract_faction_rules(text, team_name)
+        output["strategy_ploys"] = extract_strategy_ploys(text)
+        output["firefight_ploys"] = extract_firefight_ploys(text)
+        output["operatives"] = extract_operative_blocks(text)
+        output["faction_equipment"] = extract_faction_equipment(text)
 
-            # ✅ Save JSON output
-            json_output_path = os.path.join("../data", f"{team_name}.json")
-            with open(json_output_path, "w", encoding="utf-8") as json_file:
-                json.dump(output, json_file, indent=4, ensure_ascii=False)
+        # ✅ Save raw text (optional)
+        text_output_path = os.path.join("../data", f"{team_name}.txt")
+        with open(text_output_path, "w", encoding="utf-8") as text_file:
+            text_file.write(text)
 
-            print(f"✅ Saved: {json_output_path}")
+        # ✅ Save JSON output
+        json_output_path = os.path.join("../data", f"{team_name}.json")
+        with open(json_output_path, "w", encoding="utf-8") as json_file:
+            json.dump(output, json_file, indent=4, ensure_ascii=False)
+
+        print(f"✅ Saved: {json_output_path}")
 
     print("\n🎯 All PDFs processed successfully!")
