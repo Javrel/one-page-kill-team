@@ -184,8 +184,9 @@ def extract_operative_details(text, operatives):
     for operative in operatives.keys():
         print(f"\n🔍 Searching details for operative: {operative}")
 
-        # ✅ Keep the original regex as-is
-        pattern = re.search(fr"\nNAME\s*\nATK\s*\nHIT\s*\nDMG\s*\nWR\s*\n(.+?){operative}", text, re.S)
+        # ✅ Update regex to capture everything until the next `NAME`
+        pattern = re.search(fr"\nNAME\s*\nATK\s*\nHIT\s*\nDMG\s*\nWR\s*\n(.+?\n{operative}.*?)(?=\nNAME|\Z)", text, re.S)
+
 
         if not pattern:
             print(f"⚠️ No match found for {operative}")
@@ -199,10 +200,6 @@ def extract_operative_details(text, operatives):
         weapons = []
         abilities = []
         is_weapon_section = True  # Start by assuming it's in the weapons section
-
-        # 📌 **Extract Keywords (Last Line)**
-        keywords = lines[-1].strip()
-        lines = lines[:-1]  # Remove keywords from the main section
 
         # 📌 **NEW: Detect and extract weapon stats by grouping every 5 lines together**
         weapon_buffer = []
@@ -245,6 +242,24 @@ def extract_operative_details(text, operatives):
                     weapon_buffer = []  # Reset buffer for the next weapon
                 continue
 
+        operative_index = None
+
+        for idx, line in enumerate(lines):
+            if line.strip() == operative:
+                operative_index = idx
+                break
+
+        # ✅ Extract keyword from the line before the operative's name
+        if operative_index and operative_index > 0:
+            keywords = lines[operative_index - 1].strip()
+
+            # Ensure it's a valid keyword (ALL CAPS, contains commas)
+            if re.match(r"^[A-Z ,]+$", keywords):
+                operatives[operative]["keywords"] = keywords
+                print(f"🏷️ Keyword Found: {keywords}")
+            else:
+                operatives[operative]["keywords"] = "Unknown"  # Fallback if invalid
+                print(f"⚠️ Unexpected keyword format: {keywords}")
 
         # Store extracted data in the operatives list
         operatives[operative]["weapons"] = weapons
