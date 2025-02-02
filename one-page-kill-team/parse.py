@@ -1,3 +1,6 @@
+import os
+from glob import glob
+
 import fitz  # PyMuPDF
 import re
 import json
@@ -178,122 +181,317 @@ def extract_operatives_list(text):
     return operatives
 
 
-def extract_operative_details(text, operatives):
-    """Extracts operative stats, weapons, abilities, and keywords from the data section."""
+def extract_operative_name_and_keywords(operative_block):
+    """
+    Extracts the operative's name from a block of text.
+    - The keywords (uppercase, comma-separated) appear before the name.
+    - The name is between keywords and 'APL', but can span multiple lines.
+    """
 
-    for operative in operatives.keys():
-        print(f"\n🔍 Searching details for operative: {operative}")
+    # ✅ Normalize newlines and remove extra spaces
+    lines = [line.strip() for line in operative_block.splitlines() if line.strip()]
+    print(len(operative_block))
+    print(lines)
 
-        # ✅ Update regex to capture everything until the next `NAME`
-        pattern = re.search(fr"\nNAME\s*\nATK\s*\nHIT\s*\nDMG\s*\nWR\s*\n(.+?\n{operative}.*?)(?=\nNAME|\Z)", text, re.S)
+    # ✅ Find the Keywords Line (uppercase, comma-separated)
+    keyword_index = None
+    for i, line in enumerate(lines):
+        if re.match(r"^[A-Z ,]+$", line) and "," in line:  # Ensure it contains uppercase keywords
+            keyword_index = i
+
+    if keyword_index is None:
+        print("⚠️ No keyword line found in block!")
+        return None
+
+    # ✅ Find the APL Line (Ensure we match it correctly)
+    apl_index = None
+    for i in range(keyword_index, len(lines)):
+        if re.search(r"APL", lines[i], re.IGNORECASE):  # Ensure "APL" is an exact matc
+            print("found an apl")
+            apl_index = i
+            break
+        else:
+            print(lines[i])
+
+    if apl_index is None:
+        print(f"⚠️ No 'APL' line found in block! Block:\n{operative_block}\n{'-'*40}")
+        return None
+
+    # ✅ Extract the Operative Name (All lines between keywords and APL)
+    operative_name_lines = lines[keyword_index + 1 : apl_index]
+    operative_name = " ".join(operative_name_lines).strip()
+
+    # ✅ Extract Keywords
+    keywords = lines[keyword_index].strip()
+
+    return operative_name, keywords
 
 
-        if not pattern:
-            print(f"⚠️ No match found for {operative}")
-            continue  # Skip if no match found
 
-        section_text = pattern.group(1).strip()  # Extract everything between `NAME` and operative
-        lines = section_text.split("\n")
+def extract_operative_blocks(text):
+    """
+    Extract full operative data blocks, splitting them into individual operatives
+    with name, keywords, weapons, and abilities.
+    """
 
-        print(f"✅ Extracted section for {operative}:\n{'-' * 40}\n{section_text}\n{'-' * 40}\n")
+    # 1) Extract text between "NAME" (start) and "FACTION EQUIPMENT" (end)
+    match = re.search(r"(\nNAME.*?)(?=FACTION EQUIPMENT)", text, re.S)
+    if not match:
+        print("⚠️ No operative section found!")
+        return []
 
+    operative_section = match.group(1).strip()
+    print(f"✅ Extracted operative section ({len(operative_section.splitlines())} lines)")
+
+    # 2) Split by "NAME" to separate operatives
+    operative_blocks = [block.strip() for block in re.split(r"(?=\nNAME\t)", operative_section)]
+
+    all_operatives = []
+
+    for operative_block in operative_blocks:
+        lines = operative_block.splitlines()
+        # Clean up empty lines/spaces
+        lines = [l.strip() for l in lines if l.strip()]
+
+        # (A) Extract name & keywords however you do
+        name, keywords = extract_operative_name_and_keywords(operative_block)
+        operative = {
+            "name": name,
+            "keywords": keywords,
+            "weapons": [],
+            "abilities": []
+        }
+
+        #
+        # ─────────────────────────────────────────────────────────────
+        #  B) Detect the "header" lines if present
+        # ─────────────────────────────────────────────────────────────
+        if len(lines) >= 5:
+            # Compare the first 5 lines to "NAME", "ATK", "HIT", "DMG", "WR"
+            header_lines = [ln.upper() for ln in lines[:5]]
+            expected_header = ["NAME", "ATK", "HIT", "DMG", "WR"]
+
+            if header_lines == expected_header:
+                # Skip these 5 lines
+                parse_idx = 5
+            else:
+                # We didn’t find a 5-line header
+                parse_idx = 0
+        else:
+            parse_idx = 0
+
+        # ─────────────────────────────────────────────────────────────
+        # C) Parse Weapons in 5-line chunks
+        # ─────────────────────────────────────────────────────────────
         weapons = []
-        abilities = []
-        is_weapon_section = True  # Start by assuming it's in the weapons section
+        while parse_idx + 4 < len(lines):
+            chunk = lines[parse_idx: parse_idx + 5]
 
-        # 📌 **NEW: Detect and extract weapon stats by grouping every 5 lines together**
-        weapon_buffer = []
-
-        for i, line in enumerate(lines):
-            line = line.strip()
-
-            if re.match(r"^[A-Za-z\s]+:.*$", line):  # Detects ability names followed by a colon
-                is_weapon_section = False  # Switch from weapon parsing to ability parsing
-
-                # Split ability into name and description
-                ability_parts = line.split(":", 1)  # Split on first colon
-                ability_name = ability_parts[0].strip()
-                ability_desc = ability_parts[1].strip() if len(ability_parts) > 1 else ""
-
-                # Store ability as a dictionary
-                abilities.append({"name": ability_name, "description": ability_desc})
-
-                print(f"🛡️ Ability Found: {ability_name} -> {ability_desc}")
-                continue
-            # If we're still in the ability section, continue appending text to the last ability
-            elif not is_weapon_section and abilities:
-                print(abilities)
-                abilities[-1]["description"] += " " + line.strip()
-
-            # 📌 **Collect 5 lines together for weapons**
-            if is_weapon_section:
-                weapon_buffer.append(line)
-
-                if len(weapon_buffer) == 5:  # Ensure it's a full row
-                    weapon = {
-                        "NAME": weapon_buffer[0].strip(),
-                        "ATK": weapon_buffer[1].strip(),
-                        "HIT": weapon_buffer[2].strip(),
-                        "DMG": weapon_buffer[3].strip(),
-                        "WR": weapon_buffer[4].strip(),
-                    }
-                    print(f"🛠️ Weapon Found: {weapon_buffer[0].strip()}")
-                    weapons.append(weapon)
-                    weapon_buffer = []  # Reset buffer for the next weapon
-                continue
-
-        operative_index = None
-
-        for idx, line in enumerate(lines):
-            if line.strip() == operative:
-                operative_index = idx
+            # Stop if the first line looks like “AbilityName: Something”
+            # so we don't accidentally read an ability as a weapon.
+            if re.match(r"^[A-Za-z].*?:", chunk[0]):
                 break
 
-        # ✅ Extract keyword from the line before the operative's name
-        if operative_index and operative_index > 0:
-            keywords = lines[operative_index - 1].strip()
+            # Build the weapon object
+            weapon = {
+                "NAME": chunk[0],
+                "ATK": chunk[1],
+                "HIT": chunk[2],
+                "DMG": chunk[3],
+                "WR": chunk[4],
+            }
+            weapons.append(weapon)
+            parse_idx += 5
 
-            # Ensure it's a valid keyword (ALL CAPS, contains commas)
-            if re.match(r"^[A-Z ,]+$", keywords):
-                operatives[operative]["keywords"] = keywords
-                print(f"🏷️ Keyword Found: {keywords}")
-            else:
-                operatives[operative]["keywords"] = "Unknown"  # Fallback if invalid
-                print(f"⚠️ Unexpected keyword format: {keywords}")
+        operative["weapons"] = weapons
 
-        # Store extracted data in the operatives list
-        operatives[operative]["weapons"] = weapons
-        operatives[operative]["abilities"] = abilities
-        operatives[operative]["keywords"] = keywords
+        # ─────────────────────────────────────────────────────────────
+        # D) Parse Abilities from whatever remains
+        # ─────────────────────────────────────────────────────────────
+        abilities = []
+        current_ability = None
 
-    return operatives
+        for line in lines[parse_idx:]:
+            if ":" in line:
+                # Start a new ability
+                ability_name, ability_desc = map(str.strip, line.split(":", 1))
+                current_ability = {
+                    "name": ability_name,
+                    "description": ability_desc
+                }
+                abilities.append(current_ability)
+            elif current_ability:
+                # Subsequent lines belong to the current ability
+                current_ability["description"] += " " + line
+
+        operative["abilities"] = postprocess_ap_abilities(abilities)
+        all_operatives.append(operative)
+
+    return all_operatives
+
+def strip_control_chars(s: str) -> str:
+    # remove ASCII control chars (below 32 plus 127)
+    clean = re.sub(r"[\x00-\x1F\x7F]", "", s)
+    # optionally collapse multiple spaces
+    clean = re.sub(r"\s+", " ", clean)
+    return clean.strip()
+
+def postprocess_ap_abilities(abilities):
+    """
+    Given a list of abilities (each is { 'name': str, 'description': str }),
+    look for any text that matches a pattern like:
+       ABILITY_NAME 1AP ...
+    and split that chunk out as a separate ability with its own "cost" key.
+    """
+    new_abilities = []
+
+    # A regex that allows multiple uppercase words (like "ANGEL OF DEATH"),
+    # followed by an AP cost, then captures text until next AP-based action or string end.
+    # e.g. "OPTICS 1AP" or "ANGEL OF DEATH 2AP"
+    pattern = re.compile(
+        r'([A-Z\s]+)\s+(\d+AP)\s+(.*?)(?=[A-Z\s]+\d+AP|$)',
+        flags=re.DOTALL
+    )
+
+    for ability in abilities:
+        # 1) Clean the description to remove weird control chars or backspaces
+        desc = strip_control_chars(ability["description"])
+
+        ap_subabilities = []
+        # 2) Scan for 'ABILITY_NAME 1AP <text>'
+        for match in pattern.finditer(desc):
+            action_name = match.group(1).strip()  # e.g. "OPTICS" or "ANGEL OF DEATH"
+            ap_cost     = match.group(2).strip()  # e.g. "1AP"
+            action_text = match.group(3).strip()  # text until next AP-based action
+
+            sub_ability = {
+                "name":        action_name,
+                "cost":        ap_cost,      # store "1AP" here
+                "description": action_text
+            }
+            ap_subabilities.append(sub_ability)
+
+        if ap_subabilities:
+            # Remove the matched text from the original ability's description
+            # so we don't see it twice.
+            desc_cleaned = pattern.sub('', desc).strip()
+            ability["description"] = desc_cleaned
+
+            # Add the newly extracted sub-abilities
+            new_abilities.extend(ap_subabilities)
+
+        # Keep the original (possibly shortened) ability as well
+        new_abilities.append(ability)
+
+    return new_abilities
+
+def extract_faction_equipment(text):
+    """
+    Extracts the Faction Equipment section, from 'FACTION EQUIPMENT' up to
+    the next 'MARKER/TOKEN GUIDE' or 'UPDATE LOG' (or end of text).
+    Returns the raw equipment text, or an empty string if none found.
+    """
+    # Regex explanation:
+    #   1. Look for 'FACTION EQUIPMENT' literally.
+    #   2. Capture everything lazily (.*?) until
+    #   3. We see either:
+    #         - A line with 'MARKER/TOKEN GUIDE'
+    #         - A line with 'UPDATE LOG' (in case your file uses 'FELLGOR RAVAGERS: UPDATE LOG' or similar)
+    #         - OR the end of the entire text ($)
+    pattern = (
+        r"FACTION EQUIPMENT\s*\n"          # 'FACTION EQUIPMENT' + newline
+        r"(.*?)(?=\nMARKER/TOKEN GUIDE|\n.*UPDATE LOG|$)"  # until next marker or update log or end
+    )
+
+    match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+    if match:
+        equipment_text = match.group(1).strip()
+        return parse_equipment_to_list(equipment_text)
+    else:
+        return ""  # No equipment section found
+
+
+def parse_equipment_to_list(equipment_text):
+    """
+    Splits equipment text by fully uppercase headings, returning a list of
+    dicts: [ {"name": "BRASS ADORNMENTS", "description": "..."},
+             {"name": "GORE MARKS",       "description": "..."},
+             ... ]
+    """
+
+    # Regex for lines that are ALL CAPS (and can contain spaces), e.g. BRASS ADORNMENTS
+    heading_pattern = re.compile(r"^[A-Z][A-Z\s]+$", re.MULTILINE)
+
+    equipment_entries = []
+    current_heading = None
+    description_buffer = []
+
+    lines = equipment_text.splitlines()
+    for line in lines:
+        line_stripped = line.strip()
+
+        # If this line is a new uppercase heading...
+        if heading_pattern.match(line_stripped):
+            # If we already have a heading & buffer, store the previous equipment piece
+            if current_heading and description_buffer:
+                equipment_entries.append({
+                    "name": current_heading,
+                    "description": " ".join(description_buffer).strip()
+                })
+            # Reset for new heading
+            current_heading = line_stripped
+            description_buffer = []
+        else:
+            # Accumulate description text for the current heading
+            description_buffer.append(line_stripped)
+
+    # Store the last heading found (if any)
+    if current_heading and description_buffer:
+        equipment_entries.append({
+            "name": current_heading,
+            "description": " ".join(description_buffer).strip()
+        })
+
+    return equipment_entries
 
 
 # Example Usage
 if __name__ == "__main__":
-    test_doc = "../data/pdfs/killteam_teamrules_angelsofdeath_eng_02.10.24.pdf"
+    pdf_folder = "../data/input_pdfs/"
+    pdf_files = glob(os.path.join(pdf_folder, "*.pdf"))  # Get all PDFs
 
-    doc = fitz.open(test_doc)
-    text = "\n".join([page.get_text() for page in doc])
-    team_name = extract_team_name(text)
+    # 📌 **Process each PDF**
+    for pdf_path in pdf_files:
+        print(f"\n📂 Processing: {pdf_path}")
 
-    # Remove unwanted footers like "ANGELS OF DEATH » FACTION RULES"
-    cleaned_lines = [line for line in text.split("\n") if f"{team_name} »" not in line and len(line)>1]  # Ignore lines with `»`
-    text = "\n".join(cleaned_lines)
+        doc = fitz.open(pdf_path)
+        text = "\n".join([page.get_text() for page in doc])
+        team_name = extract_team_name(text)
 
+        print(f"🛡️ Team Name: {team_name}")
+        if team_name == "ANGELS OF DEATH":
+            # ✅ Remove unwanted footers like "ANGELS OF DEATH » FACTION RULES"
+            cleaned_lines = [line for line in text.split("\n") if f"{team_name} »" not in line and len(line) > 1]
+            text = "\n".join(cleaned_lines)
 
-    output = {"name": team_name}
-    output["faction_rules"] = extract_faction_rules(text, team_name)
-    output["strategy_ploys"] = extract_strategy_ploys(text)
-    output["firefight_ploys"] = extract_firefight_ploys(text)
-    operatives_list = extract_operatives_list(text)
-    operatives = extract_operative_details(text, operatives_list)
-    output["operatives"] = operatives
-    with open("../data/killteam_data.txt", "w", encoding="utf-8") as text_file:
-        text_file.write(text)
+            # ✅ Extract Data
+            output = {"name": team_name}
+            output["faction_rules"] = extract_faction_rules(text, team_name)
+            output["strategy_ploys"] = extract_strategy_ploys(text)
+            output["firefight_ploys"] = extract_firefight_ploys(text)
+            output["operatives"] = extract_operative_blocks(text)
+            output["faction_equipmebt"] = extract_faction_equipment(text)
 
-    # Output the structured JSON file
-    with open("../data/killteam_data.json", "w", encoding="utf-8") as json_file:
-        json.dump(output, json_file, indent=4, ensure_ascii=False)
+            # ✅ Save raw text (optional)
+            text_output_path = os.path.join("../data", f"{team_name}.txt")
+            with open(text_output_path, "w", encoding="utf-8") as text_file:
+                text_file.write(text)
 
-    print("Kill Team data extracted and saved as 'killteam_data.json'.")
+            # ✅ Save JSON output
+            json_output_path = os.path.join("../data", f"{team_name}.json")
+            with open(json_output_path, "w", encoding="utf-8") as json_file:
+                json.dump(output, json_file, indent=4, ensure_ascii=False)
+
+            print(f"✅ Saved: {json_output_path}")
+
+    print("\n🎯 All PDFs processed successfully!")
