@@ -1,24 +1,25 @@
-import fitz  # PyMuPDF
 import re
+import fitz  # PyMuPDF
 import json
 
-
-def extract_team_name(text):
-    """Extracts the team name from the first line of the text."""
-    first_line = text.strip().split("\n")[0]  # Get the first line
-    return first_line.strip()  # Remove extra spaces
+def clean_text(text):
+    """
+    Removes special hidden characters and non-printable ASCII symbols from text.
+    Keeps essential punctuation, letters, and numbers.
+    """
+    return re.sub(r"[^\x20-\x7E]", "", text)  # Keeps only printable ASCII characters
 
 
 def format_text(content):
     """
-    Splits text around `.\n` but removes `\n` that is NOT preceded by a `.`
-    Returns a list of sentences.
+    - Splits text around `.` or `:`
+    - Replaces `\n` with a space unless preceded by `.`
+    - Ensures sentences remain properly structured
     """
-    # Replace newline characters that are NOT preceded by a dot (.) with a space
-    formatted_content = re.sub(r"(?<!\.)\n", " ", content)
 
-    # Split sentences where a dot is followed by a newline
-    sentences = re.split(r"\.\s*\n", formatted_content)
+    # Split sentences where there's a `.` or `:`, ensuring colons also start a new list item
+    sentences = re.split(r"[\.:]\n", content)
+
 
     return [sentence.strip() for sentence in sentences if sentence.strip()]
 
@@ -61,6 +62,12 @@ def extract_faction_rules(text, team_name):
         sections[last_section] = format_text("\n".join(content_lines).strip())
 
     return sections
+
+
+def extract_team_name(text):
+    """Extracts the team name from the first line of the text."""
+    first_line = text.strip().split("\n")[0]  # Get the first line
+    return first_line.strip()  # Remove extra spaces
 
 
 # Example Usage
