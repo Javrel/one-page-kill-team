@@ -1,0 +1,339 @@
+{
+    "name": "VESPID STINGWINGS",
+    "faction_rules": {
+        "NEUTRON CHARGE": [
+            "Neutron weapons are powered by radioactive crystals from the Vespids’ home world. The harmonic thrumming of Vespids’ wings resonates within the crystals to charge them. When unleashed, even heavy combat armour can barely protect against this atom‑stripping energy charge",
+            "Neutron weapons are any weapons that have the word ‘neutron’ in their name, e.g. neutron blaster, neutron grenade launcher, etc. Whenever a friendly VESPID STINGWING operative moves or uses FLY, its neutron weapons have the Piercing 1 weapon rule until the end of the turning point."
+        ],
+        "COMMUNION": [
+            "Other species struggle to understand and interact with Vespids. The T’au have managed to establish strong links through various technological aids, most notably their communion helms. The Vespids have accepted these aids as beneficial, but the true extent of their impact is unknown",
+            "Communion points are used to maintain the tactical focus of friendly VESPID STINGWING  operatives. In the Ready step of each Strategy phase, you gain D3 Communion points, plus 1 if a friendly OVERSIGHT DRONE operative is in the killzone",
+            "Communion points are used as follows (OVERSIGHT DRONE operatives aren’t affected by the following): 1",
+            "Whenever a friendly VESPID STINGWING  operative is performing the Shoot action, it can only target the closest enemy operative within 8\" of it (excluding enemy operatives within control range of other friendly VESPID STINGWING operatives) unless you spend 1 of your Communion points",
+            "For weapons with the Blast and Torrent weapon rules, only the first target must be selected in this way",
+            "2",
+            "Whenever a friendly VESPID STINGWING  operative performs the Charge action, it must end the action within control range of the closest enemy operative it can unless you spend 1 of your Communion points",
+            "3",
+            "Whenever you would perform the Pick Up Marker or a mission action (excluding Operate Hatch) with a friendly VESPID STINGWING  operative, you must also spend 1 of your Communion points to do so",
+            "4",
+            "Whenever a friendly VESPID STINGWING  operative is shooting, you can spend 1 (and only 1) of your Communion points to re‑roll one of your attack dice."
+        ],
+        "FLY": [
+            "The thrumming wings of the Vespids bear them aloft with speed and remarkable agility",
+            "Whenever a friendly VESPID STINGWING  operative performs an action in which it moves, it can FLY. If it does, don’t move it",
+            "Instead, remove it from the killzone and set it back up wholly within a distance equal to its Move stat (or 3\" if it was a Dash) of its original location, measuring the horizontal distance only (in a killzone that uses the close quarters rules, e.g. Killzone: Gallowdark, this distance cannot be measured over or through Wall terrain, and that operative cannot be set up on the other side of an access point – in other words it cannot FLY through an open hatchway). Note that it gains no additional distance when performing the Charge action. It must be set up in a location it can be placed, and unless it’s the Charge action, it cannot be set up within control range of an enemy operative",
+            "6"
+        ]
+    },
+    "strategy_ploys": {
+        "HARDENED EXOSKELETON": [
+            "Natural exoskeletal chitin armours the Vespids, giving them an insectile resilience against all but the most grievous blows",
+            "Whenever a friendly VESPID STINGWING  operative (excluding OVERSIGHT DRONE) is fighting or retaliating, Normal Dmg of 4 or more inflicts 1 less damage on it."
+        ],
+        "AERIAL AGILITY": [
+            "Vespids jink and weave through the air, following unpredictable flight paths that confound foes who have not had time to line up clean shots",
+            "Whenever an operative is shooting a friendly VESPID STINGWING  operative while counteracting, or during an activation in which that shooting operative moved or was set up, roll one D6 whenever an attack dice would inflict Normal Dmg: on a 5+, ignore that inflicted damage. A maximum of one attack dice can be ignored per Shoot action sequence."
+        ],
+        "AIRBORNE PREDATORS": [
+            "Hard‑wired instincts see the Vespids pounce upon their victims from on high, striking with lethal predatory intent",
+            "Whenever a friendly VESPID STINGWING  operative moves or uses FLY during its activation, its weapons have the Balanced weapon rule until the end of that activation."
+        ],
+        "STING": [
+            "The bayonet‑like stingers that jut from the Vespids’ abdomens can be employed as weapons, their vicious barbs piercing plate armour and driving deep into their victims’ bodies",
+            "Friendly VESPID STINGWING  operatives’ claws have the Lethal 5+ and Shock weapon rules."
+        ]
+    },
+    "firefight_ploys": {
+        "OCELLI": [
+            "The multispectral eyesight and esoteric sensory acuity of the Vespids are equal to any scanning technologies. As they sweep over the battlefield, they easily pick out even the most well‑concealed enemies",
+            "Use this firefight ploy when a friendly VESPID STINGWING operative performs the Shoot action during an activation in which it’s used FLY. Until the end of that action, it gains all benefits from the first and second main features of Vantage terrain. When determining the height difference between operatives for Vantage terrain rules, treat that friendly operative as being 3\" higher than it currently is (but not when determining the distance for Communion)."
+        ],
+        "DARTING FLIGHT": [
+            "Vespids are capable of tremendous airborne speed, allowing them to rapidly reposition during a firefight",
+            "Use this firefight ploy when a friendly VESPID STINGWING operative performs the Reposition action. Until the end of that action, it can move an additional D3\", or be set up an additional D3\" away if it uses FLY. In either case, it cannot perform Shoot or Fight actions for the rest of the turning point."
+        ],
+        "NEUTRON OVERLOAD": [
+            "Augmented in some ineffable fashion by the rapid wing beats of the Vespids, their neutron weaponry can unleash horrific point‑blank energy blasts",
+            "Use this firefight ploy when you resolve a critical success for a friendly VESPID STINGWING  operative that’s shooting with a neutron weapon during an activation in which it’s moved or used FLY. If the target is within 4\" of it, inflict D3 additional damage."
+        ],
+        "VICIOUS VENOM": [
+            "Many Strains of Vespid produce various neurotoxins and inflammatory agents from their abdominal stingers, which can reduce victims to convulsing wrecks or anaphylactically bloat their flesh to bursting point",
+            "Use this firefight ploy when a friendly VESPID STINGWING operative (excluding OVERSIGHT DRONE) is fighting and you strike with a critical success. Inflict D3 additional damage."
+        ]
+    },
+    "operatives": [
+        {
+            "name": "VESPID STRAIN LEADER",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, STRAIN, LEADER",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "10",
+                "SAVE": "5+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Neutron blaster",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/3",
+                    "WR": "Devastating 2"
+                },
+                {
+                    "NAME": "Claws",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Communion Helm",
+                    "description": "Once during each of this operative’s activations, you can spend 1 Communion point for free."
+                },
+                {
+                    "name": "Commune",
+                    "description": "When selecting your operatives for the battle, also select one VESPID STINGWING  strategy ploy. Whenever this operative is in the killzone and not within control range of enemy operatives, that ploy costs you 0CP."
+                }
+            ]
+        },
+        {
+            "name": "OVERSIGHT DRONE",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, OVERSIGHT, DRONE",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "5",
+                "SAVE": "2+",
+                "MOVE": "8\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Ram",
+                    "ATK": "3",
+                    "HIT": "5+",
+                    "DMG": "1/2",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "AERIAL GUIDANCE",
+                    "cost": "1AP",
+                    "description": "SUPPORT. Until the start of this operative’s next activation, whenever another friendly VESPID STINGWING operative visible to and within 6\" of this operative is shooting an enemy operative visible to this operative, that friendly operative’s ranged weapons have the Lethal 5+ and Saturate weapon rules. This has no effect while this operative is within control range of an enemy operative. This operative cannot perform this action while within control range of an enemy operative."
+                },
+                {
+                    "name": "Evasive Drone",
+                    "description": "•This operative cannot perform any actions other than Aerial Guidance, Charge, Dash, Fall Back, Fight and Reposition. •Whenever determining control of an objective marker, treat this operative’s APL stat as 1 lower. Note this isn’t a change to its APL stat, so any changes are cumulative with this. •Whenever determining what’s visible to this operative, the round disc at the top of the miniature is its head. •Whenever this operative has a Conceal order and is in cover, it cannot be selected as a valid target, taking precedence over all other rules (e.g. Seek, Vantage terrain) except being within 2\". •Whenever an operative is shooting this operative, ignore the Piercing weapon rule."
+                }
+            ]
+        },
+        {
+            "name": "VESPID LONGSTING",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, LONGSTING",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "9",
+                "SAVE": "5+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Neutron rail rifle (standard)",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "4/4",
+                    "WR": "Devastating 2, Neutron Fragment*"
+                },
+                {
+                    "NAME": "Neutron rail rifle (aimed)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/4",
+                    "WR": "Devastating 2, Heavy (Dash only), Lethal 5+, Neutron Fragment*"
+                },
+                {
+                    "NAME": "Claws",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "*Neutron Fragment",
+                    "description": "If the target of this weapon isn’t incapacitated but you resolve any attack dice, the target gains one of your Neutron Fragment tokens. In the Ready step of each Strategy phase, separately inflict D3 damage on each operative for each of your Neutron Fragment tokens it has."
+                }
+            ]
+        },
+        {
+            "name": "VESPID SHADESTRAIN",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, SHADESTRAIN",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "9",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Neutron sting",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/3",
+                    "WR": "Range 8\", Devastating 2"
+                },
+                {
+                    "NAME": "Neutron grenade",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/3",
+                    "WR": "Range 6\", Blast 2\", Devastating 2, Limited 1, Saturate"
+                },
+                {
+                    "NAME": "Claws",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Ghost Rig",
+                    "description": "While this operative has a Conceal order, your opponent cannot select it as a valid target unless it’s within 6\" of the operative trying to target it. Note that this rule has no effect if this operative isn’t selected as the valid target, e.g. if it’s a secondary target from the Blast weapon rule."
+                },
+                {
+                    "name": "Camouflaged",
+                    "description": "Whenever an operative is shooting this operative, ignore the Piercing weapon rule and all cover saves are retained as critical successes. This rule has no effect if this operative isn’t selected as the valid target, e.g. if it’s a secondary target from the Blast weapon rule."
+                }
+            ]
+        },
+        {
+            "name": "VESPID SKYBLAST",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, SKYBLAST",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "9",
+                "SAVE": "5+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Neutron grenade launcher",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/3",
+                    "WR": "Blast 2\", Devastating 2, Neutron Bombardment*"
+                },
+                {
+                    "NAME": "Claws",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "*Neutron Bombardment",
+                    "description": "Place one of your Neutron Fallout markers within the primary target’s control range."
+                },
+                {
+                    "name": "Neutron Fallout",
+                    "description": "Once during each enemy operative’s activation, as soon as it’s within 2\" of one of your Neutron Fallout markers, inflict D3 damage on that operative (multiple markers aren’t cumulative)."
+                }
+            ]
+        },
+        {
+            "name": "VESPID SWARMGUARD",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, SWARMGUARD",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "9",
+                "SAVE": "5+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Flamer (standard)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/3",
+                    "WR": "Range 8\", Saturate, Torrent 2\""
+                },
+                {
+                    "NAME": "Flamer (skytorch)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/3",
+                    "WR": "Saturate, Torrent 0\", Skytorch*"
+                },
+                {
+                    "NAME": "Claws",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "*Skytorch",
+                    "description": "An operative can only use this weapon during an activation in which it performed the Reposition action with FLY. If it does, don’t select a valid target. Instead, shoot against each operative within its torch zone (excluding operatives wholly underneath Vantage terrain); they aren’t in cover or obscured. Roll each sequence separately in order of furthest operative to closest. The torch zone is the area between the operative’s current and previous location. A 28mm round Skytorch marker can be temporarily placed underneath this operative before it moves to help determine this. Torrent 0\" means you cannot select secondary targets outside of its torch zone, but this weapon still has the Torrent weapon rule for all other rules purposes, e.g. the Condensed Stronghold rule (see Killzone: Volkus, Kill Team Core Book)."
+                }
+            ]
+        },
+        {
+            "name": "VESPID WARRIOR",
+            "keywords": "VESPID STINGWING , T’AU EMPIRE, WARRIOR",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "9",
+                "SAVE": "5+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Neutron blaster",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/3",
+                    "WR": "Devastating 2"
+                },
+                {
+                    "NAME": "Claws",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Warrior Instincts",
+                    "description": "Whenever this operative is shooting, if you don’t spend Communion points during that sequence, its neutron blaster has the Accurate 1 weapon rule until the end of that sequence."
+                }
+            ]
+        }
+    ],
+    "faction_equipment": [
+        {
+            "name": "NEUROSTIMULANT",
+            "description": "Dispensed from ampoules within the Vespid’s armour, this chemical cocktail is intended to aid the clarity of communion and ensure discipline is maintained during battle. In the Ready step of each Strategy phase, when determining how many Communion points to gain, you can roll two D3 and select one D3 to use."
+        },
+        {
+            "name": "CONVERGENCE STIMULANT",
+            "description": "This substance, dispensed only in extreme cases and at the Shas’ui’s discretion, suppresses the instinctual responses of the Vespids to aid in mission focus under extreme stress. Once per turning point, a friendly VESPID STINGWING operative can perform the Pick Up Marker or a mission action without you spending a Communion point."
+        },
+        {
+            "name": "ACCELERANT STIMULANT",
+            "description": "Though it bears long‑term risks of injury or dangerous fatigue, this stimulant sharpens the Vespids’ reactions and lends them haste in the heat of battle. Whenever a friendly VESPID STINGWING  operative (excluding OVERSIGHT DRONE) performs the Charge or Dash action, it can move an additional 1\". If it uses FLY for this action, you can set it back up 1\" further away."
+        },
+        {
+            "name": "AGGRESSION STIMULANT",
+            "description": "Should their Vespids look in danger of being overrun, a Shas’ui may risk triggering the release of this highly‑addictive mixture of combat stimulants and aggression amplifiers. Whenever a friendly VESPID STINGWING  operative (excluding OVERSIGHT DRONE) is fighting, its melee weapons have the Ceaseless weapon rule."
+        }
+    ]
+}

@@ -46,4 +46,4 @@ def remove_quotes_and_anything_after(text):
 
 
 def is_keyword_line(line):
-    return re.match(r"^[A-Z ,\-]+$", line) and "," in line
+    return re.match(r"^(?![\'’])[A-Z ,\-’']+$", line) and "," in line

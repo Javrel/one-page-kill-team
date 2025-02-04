@@ -29,7 +29,8 @@ def extract_strategy_ploys(text):
             last_section = line
             content_lines = []
         else:
-            content_lines.append(line)
+            if not re.fullmatch(r"\d+", line):
+                content_lines.append(line)
 
     # Store the last section
     if last_section and content_lines:
@@ -65,7 +66,8 @@ def extract_firefight_ploys(text):
             last_section = line
             content_lines = []
         else:
-            content_lines.append(line)
+            if not re.fullmatch(r"\d+", line):
+                content_lines.append(line)
 
     # Store the last section
     if last_section and content_lines:
