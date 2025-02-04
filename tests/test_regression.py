@@ -8,9 +8,8 @@ from shutil import copy2
 from one_page_kill_team.utils import extract_team_name# Assuming this exists in your project
 from one_page_kill_team.parse import parse_folder
 
-PDF_FOLDER = Path(r"C:\Users\harle\git\one-page-kill-team\tests\regression_data\pdf")
-REFERENCE_FOLDER = Path(r"C:\Users\harle\git\one-page-kill-team\tests\regression_data\json")
-PARSE_SCRIPT = Path(r"C:\Users\harle\git\one-page-kill-team\parse.py")
+PDF_FOLDER = Path("./tests/regression_data/pdf")
+REFERENCE_FOLDER = Path(r"./tests/regression_data/json")
 
 @pytest.fixture
 def temp_output_dir(tmp_path):
@@ -18,13 +17,6 @@ def temp_output_dir(tmp_path):
     output_dir = tmp_path / "output_json"
     output_dir.mkdir()
     return output_dir
-
-def run_parse_script(output_dir):
-    """Runs parse.py and directs JSON output to the temporary directory."""
-    try:
-        subprocess.run(["python", str(PARSE_SCRIPT)], check=True)
-    except subprocess.CalledProcessError as e:
-        pytest.fail(f"🚨 Failed to run parse.py: {e}")
 
 def load_json_as_string(file_path):
     """Loads a JSON file, sorts keys, and returns a formatted string."""
