@@ -1,8 +1,6 @@
 import re
 
-from utils import strip_control_chars
-
-X = 10
+from one_page_kill_team.utils import strip_control_chars
 
 
 def extract_operatives_list(text):

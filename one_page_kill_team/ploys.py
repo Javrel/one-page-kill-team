@@ -1,6 +1,6 @@
 import re
 
-from utils import format_text
+from one_page_kill_team.utils import format_text
 
 
 def extract_strategy_ploys(text):

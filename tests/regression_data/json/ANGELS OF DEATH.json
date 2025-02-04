@@ -1,0 +1,560 @@
+{
+    "name": "ANGELS OF DEATH",
+    "faction_rules": {
+        "CHAPTER TACTICS": [
+            "Each Space Marine Chapter is a martial brotherhood with its own combat philosophies, suited to the unique skills and temperaments of its battle-brothers. These tenets of war may be clothed in esoteric rituals built up over thousands of years, but remain as brutally effective as when they were first laid down",
+            "When selecting your kill team, select a primary and secondary CHAPTER TACTIC for friendly ANGEL OF DEATH  operatives to gain for the battle. Multiple instances of the same CHAPTER TACTIC are not cumulative",
+            "Designer’s Note: If you’re playing a series of games, i.e. a campaign or tournament, you must select the same primary and secondary CHAPTER TACTIC for every battle (you can still change the secondary with the Adaptive Tactics strategy ploy)",
+            "1. Aggressive This operative’s melee weapons have the Rending weapon rule",
+            "2. Dueller Once per sequence, whenever this operative is fighting or retaliating:",
+            "•  One of your normal successes can block one unresolved critical success (unless the enemy operative’s weapon has the Brutal weapon rule)",
+            "•  One of your critical successes can block two unresolved normal successes (instead of one critical success)",
+            "3. Resolute You can ignore any changes to this operative’s APL stat",
+            "4. Stealthy Whenever an operative is shooting this operative, if you can retain any cover saves, you can retain one additional cover save, or you can retain one cover save as a critical success instead. This isn’t cumulative with improved cover saves from Vantage terrain",
+            "5. Mobile",
+            "•  This operative can perform the Fall Back action for 1 less AP",
+            "•  This operative can perform the Charge action while within control range of an enemy operative, and can leave that operative’s control range to do so (but then normal requirements for that move apply)",
+            "6. Hardy Whenever an operative is shooting this operative, defence dice results of 5+ are critical successes",
+            "7. Sharpshooter Whenever this operative is shooting during an activation in which it hasn’t performed the Charge, Fall Back or Reposition action, its bolt weapons have the Severe weapon rule",
+            "8. Siege Specialist This operative’s ranged weapons have the Saturate weapon rule."
+        ],
+        "ASTARTES": [
+            "These genetically modified superhumans are made for one purpose: war",
+            "During each friendly ANGEL OF DEATH operative’s activation, it can perform either two Shoot actions or two Fight actions. If it’s two Shoot actions, a bolt weapon must be selected for at least one of them, and if it’s a bolt sniper rifle or heavy bolter, 1 additional AP must be spent for the second action if both actions are using that weapon",
+            "Each friendly ANGEL OF DEATH operative can counteract regardless of its order",
+            "6"
+        ]
+    },
+    "strategy_ploys": {
+        "COMBAT DOCTRINE": [
+            "Space Marines hold the teachings of the Codex Astartes in highest esteem, employing its flexible combat doctrines to annihilate their enemies",
+            "Select one COMBAT DOCTRINE from those presented below",
+            "Whenever a friendly ANGEL OF DEATH  operative is x, its weapons have the Balanced weapon rule. X is the COMBAT DOCTRINE you selected",
+            "•  Devastator Doctrine: Shooting an operative more than 6\" from it",
+            "•  Tactical Doctrine: Shooting an operative within 6\" of it",
+            "•  Assault Doctrine: Fighting or retaliating."
+        ],
+        "AND THEY SHALL KNOW NO FEAR": [
+            "Space Marines possess extraordinary courage and are utterly unflinching in the face of terrifying horrors and overwhelming odds",
+            "You can ignore any changes to the stats of friendly ANGEL OF DEATH  operatives from being injured (including their weapons’ stats)."
+        ],
+        "ADAPTIVE TACTICS": [
+            "There are few more tactically flexible warriors than the Adeptus Astartes. Supplementing the teachings of the Codex Astartes with their own experience, Space Marines may adjust their strategies at a moment’s notice",
+            "Change your secondary CHAPTER TACTIC. Note this ploy only lasts until the end of the turning point, at which point your original secondary CHAPTER TACTIC returns."
+        ],
+        "INDOMITUS": [
+            "This is the Era Indomitus. The Imperium wages galaxy-spanning crusades to drive back the horrors that plague it, and the battle-brothers of the Adeptus Astartes are spurred on by this righteous purpose",
+            "Whenever an operative is shooting a friendly ANGEL OF DEATH  operative, if you roll two or more fails, you can discard one of them to retain another as a normal success instead."
+        ]
+    },
+    "firefight_ploys": {
+        "ADJUST DOCTRINE": [
+            "Adeptus Astartes kill teams adapt their strategies on the fly to overcome the foe. Swiftly traded hand signals and abrupt vox exchanges herald a shift in doctrine",
+            "Use this firefight ploy during a friendly ANGEL OF DEATH operative’s activation, before or after it performs an action",
+            "If you’ve used the Combat Doctrine strategy ploy during this turning point, change the COMBAT DOCTRINE you selected."
+        ],
+        "TRANSHUMAN PHYSIOLOGY": [
+            "The genetically modified physiology of a Space Marine is capable of resisting wounds that would kill a lesser being",
+            "Use this firefight ploy when an operative is shooting a friendly ANGEL OF DEATH  operative, in the Roll Defence Dice step",
+            "You can retain one of your normal successes as a critical success instead."
+        ],
+        "SHOCK ASSAULT": [
+            "The Adeptus Astartes strike with exceptional speed and strength, the roar of chainswords and brutal assaults spelling death for their foes",
+            "Use this firefight ploy when a friendly ANGEL OF DEATH operative is performing the Fight action during an activation in which it performed the Charge action, at the start of the Resolve Attack Dice step. Until the end of that action:",
+            "•  Its melee weapon has the Shock weapon rule",
+            "•  The first time you strike during that sequence, inflict 1 additional damage (to a maximum of 7)."
+        ],
+        "WRATH OF VENGEANCE": [
+            "When roused to anger, a battle-brother of the Adeptus Astartes may be spurred to acts of extraordinary strength and athleticism",
+            "Use this firefight ploy when a friendly ANGEL OF DEATH operative is counteracting. It can perform an additional 1AP action for free during that counteraction, but both actions must be different",
+            "7"
+        ]
+    },
+    "operatives": [
+        {
+            "name": "SPACE MARINE CAPTAIN",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, LEADER, SPACE MARINE CAPTAIN",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "15",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Plasma pistol (standard)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 8\", Piercing 1"
+                },
+                {
+                    "NAME": "Plasma pistol (supercharge)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007Range 8\", Hot, Lethal 5+, Piercing 1"
+                },
+                {
+                    "NAME": "Power fist",
+                    "ATK": "5",
+                    "HIT": "3+",
+                    "DMG": "5/7",
+                    "WR": "\u0007Brutal"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Heroic Leader",
+                    "description": "Once per turning point, you can use a firefight ploy for 0CP if this is the specified ANGEL OF DEATH  operative (excluding Command Re-roll), or the Adjust Doctrine firefight ploy for 0CP if this operative is in the killzone and not within control range of enemy operatives."
+                },
+                {
+                    "name": "Iron Halo",
+                    "description": "Once per battle, when an attack dice inflicts Normal Dmg on this operative, you can ignore that inflicted damage. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, LEADER, SPACE MARINE CAPTAIN SPACE MARINE CAPTAIN 3 APL WOUNDS SAVE MOVE 6\" 3+ 15 40"
+                }
+            ]
+        },
+        {
+            "name": "ASSAULT INTERCESSOR SERGEANT",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, LEADER, ASSAULT INTERCESSOR, SERGEANT",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "15",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Hand flamer",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/3",
+                    "WR": "\u0007Range 6\", Saturate, Torrent 1\""
+                },
+                {
+                    "NAME": "Heavy bolt pistol",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Range 8\", Piercing Crits 1"
+                },
+                {
+                    "NAME": "Plasma pistol (standard)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 8\", Piercing 1"
+                },
+                {
+                    "NAME": "Plasma pistol (supercharge)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007Range 8\", Hot, Lethal 5+, Piercing 1"
+                },
+                {
+                    "NAME": "Chainsword",
+                    "ATK": "5",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Power fist",
+                    "ATK": "5",
+                    "HIT": "4+",
+                    "DMG": "5/7",
+                    "WR": "\u0007Brutal"
+                },
+                {
+                    "NAME": "Power weapon",
+                    "ATK": "5",
+                    "HIT": "3+",
+                    "DMG": "4/6",
+                    "WR": "\u0007Lethal 5+"
+                },
+                {
+                    "NAME": "Thunder hammer",
+                    "ATK": "5",
+                    "HIT": "4+",
+                    "DMG": "5/6",
+                    "WR": "\u0007Shock, Stun"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Doctrine Warfare",
+                    "description": "Whenever you would use the Combat Doctrine strategic ploy and then select Assault or Tactical, if this operative is in the killzone, it costs you 0CP."
+                },
+                {
+                    "name": "Chapter Veteran",
+                    "description": "At the end of the Select Operatives step, if this operative is selected for deployment, select one additional CHAPTER TACTIC for it to have for the battle. Unlike primary and secondary CHAPTER TACTICS, you don’t have to select the same one for each battle in a campaign or tournament. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, LEADER, ASSAULT INTERCESSOR, SERGEANT ASSAULT INTERCESSOR SERGEANT 3 APL WOUNDS SAVE MOVE 6\" 3+ 15 32 8"
+                }
+            ]
+        },
+        {
+            "name": "INTERCESSOR SERGEANT",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, APEPTUS ASTARTES, LEADER, INTERCESSOR, SERGEANT",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "15",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Auto bolt rifle",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Torrent 1\""
+                },
+                {
+                    "NAME": "Bolt rifle",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Piercing Crits 1"
+                },
+                {
+                    "NAME": "Stalker bolt rifle (heavy)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Heavy (Dash only), Lethal 5+, Piercing Crits 1"
+                },
+                {
+                    "NAME": "Stalker bolt rifle (mobile)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Chainsword",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Power fist",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "5/7",
+                    "WR": "\u0007Brutal"
+                },
+                {
+                    "NAME": "Power weapon",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/6",
+                    "WR": "\u0007Lethal 5+"
+                },
+                {
+                    "NAME": "Thunder hammer",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "5/6",
+                    "WR": "\u0007Shock, Stun"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Doctrine Warfare",
+                    "description": "Whenever you would use the Combat Doctrine strategic ploy and then select Devastator or Tactical, if this operative is in the killzone, it costs you 0CP."
+                },
+                {
+                    "name": "Chapter Veteran",
+                    "description": "At the end of the Select Operatives step, if this operative is selected for deployment, select one additional CHAPTER TACTIC for it to have for the battle. Unlike primary and secondary CHAPTER TACTICS, you don’t have to select the same one for each battle in a campaign or tournament. ANGEL OF DEATH , IMPERIUM, APEPTUS ASTARTES, LEADER, INTERCESSOR, SERGEANT INTERCESSOR SERGEANT 3 APL WOUNDS SAVE MOVE 6\" 3+ 15 32"
+                }
+            ]
+        },
+        {
+            "name": "ASSAULT INTERCESSOR GRENADIER",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ASSAULT INTERCESSOR, GRENADIER",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "14",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Heavy bolt pistol",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Range 8\", Piercing Crits 1"
+                },
+                {
+                    "NAME": "Chainsword",
+                    "ATK": "5",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Grenadier",
+                    "description": "This operative can use frag and krak grenades (see universal equipment). Doing so doesn’t count towards any limited uses you have (i.e. if you also select those grenades from equipment for other operatives). Whenever it’s doing so, improve the Hit stat of that weapon by 1. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ASSAULT INTERCESSOR, GRENADIER ASSAULT INTERCESSOR GRENADIER 3 APL WOUNDS SAVE MOVE 6\" 3+ 14 32 9"
+                }
+            ]
+        },
+        {
+            "name": "ASSAULT INTERCESSOR WARRIOR",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ASSAULT INTERCESSOR, WARRIOR",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "14",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Heavy bolt pistol",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Range 8\", Piercing Crits 1"
+                },
+                {
+                    "NAME": "Chainsword",
+                    "ATK": "5",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": []
+        },
+        {
+            "name": "ELIMINATOR SNIPER",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ELIMINATOR, SNIPER",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "12",
+                "SAVE": "3+",
+                "MOVE": "7\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Bolt pistol",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Range 8\""
+                },
+                {
+                    "NAME": "Bolt sniper rifle (executioner)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Heavy (Dash only), Saturate, Seek Light, Silent"
+                },
+                {
+                    "NAME": "Bolt sniper rifle (hyperfrag)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "2/4",
+                    "WR": "\u0007Blast 1\", Heavy (Dash only), Silent"
+                },
+                {
+                    "NAME": "Bolt sniper rifle (mortis)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/3",
+                    "WR": "\u0007Devastating 3, Heavy (Dash only), Piercing 1, Silent"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "OPTICS",
+                    "cost": "1AP",
+                    "description": "Until the start of this operative’s next activation, whenever it’s shooting, enemy operatives cannot be obscured. This operative cannot perform this action while within control range of an enemy operative. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ELIMINATOR, SNIPER ELIMINATOR SNIPER 3 APL WOUNDS SAVE MOVE 7\" 3+ 12 40 10"
+                },
+                {
+                    "name": "Camo Cloak",
+                    "description": "Whenever an operative is shooting this operative, ignore the Saturate weapon rule. This operative has the Stealthy CHAPTER TACTIC. If you selected that CHAPTER TACTIC, you can do both of its options (i.e. retain two cover saves – one normal and one critical success)."
+                }
+            ]
+        },
+        {
+            "name": "HEAVY INTERCESSOR GUNNER",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, HEAVY INTERCESSOR, GUNNER",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "18",
+                "SAVE": "3+",
+                "MOVE": "4\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Heavy bolter (focused)",
+                    "ATK": "5",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007Piercing Crits 1"
+                },
+                {
+                    "NAME": "Heavy bolter (sweeping)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007Piercing Crits 1, Torrent 1\""
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": []
+        },
+        {
+            "name": "INTERCESSOR GUNNER",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, INTERCESSOR, GUNNER",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "14",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Auto bolt rifle",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Torrent 1\""
+                },
+                {
+                    "NAME": "Auxiliary grenade launcher (frag)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "2/4",
+                    "WR": "\u0007Blast 2\""
+                },
+                {
+                    "NAME": "Auxiliary grenade launcher (krak)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007Piercing 1"
+                },
+                {
+                    "NAME": "Bolt rifle",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Piercing Crits 1"
+                },
+                {
+                    "NAME": "Stalker bolt rifle (heavy)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Heavy (Dash only), Lethal 5+, Piercing Crits 1"
+                },
+                {
+                    "NAME": "Stalker bolt rifle (mobile)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": []
+        },
+        {
+            "name": "INTERCESSOR WARRIOR",
+            "keywords": "ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, INTERCESSOR, WARRIOR",
+            "stats": {
+                "APL": "3",
+                "WOUNDS": "14",
+                "SAVE": "3+",
+                "MOVE": "6\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Auto bolt rifle",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Torrent 1\""
+                },
+                {
+                    "NAME": "Bolt rifle",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Piercing Crits 1"
+                },
+                {
+                    "NAME": "Stalker bolt rifle (heavy)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Heavy (Dash only), Lethal 5+, Piercing Crits 1"
+                },
+                {
+                    "NAME": "Stalker bolt rifle (mobile)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": []
+        }
+    ],
+    "faction_equipment": [
+        {
+            "name": "PURITY SEALS",
+            "description": "Awarded by the Chapter’s Chaplains, purity seals are inscribed with blessings and inspire the bearer to fight with increased vigour. Once per turning point, when a friendly ANGEL OF DEATH operative is shooting, fighting or retaliating, if you roll two or more fails, you can discard one of them to retain another as a normal success instead."
+        },
+        {
+            "name": "CHAPTER RELIQUARIES",
+            "description": "Many Space Marines bear macabre relics taken from the bodies of their fallen. Those who bear these inspirational items fight all the harder to honour the sacrifice of their battle-brothers. You can use the Wrath of Vengeance firefight ploy for 0CP if the specified friendly operative has an Engage order."
+        },
+        {
+            "name": "TILTING SHIELDS",
+            "description": "As well as displaying company colours and personal heraldry, a Space Marine’s tilting plate serves to protect the bearer in the press of melee combat. Once per turning point, when a friendly ANGEL OF DEATH operative is fighting or retaliating, after your opponent rolls their attack dice, you can use this rule. If you do, your opponent cannot retain attack dice results of less than 6 as critical successes during that sequence (e.g. as a result of the Lethal, Rending or Severe weapon rules)."
+        },
+        {
+            "name": "AUSPEX",
+            "description": "Auspexes come in many forms. These scanning devices can detect motion, analyse atmospheric conditions and reveal heat signatures. Once per turning point, when a friendly ANGEL OF DEATH operative performs the Shoot action and you’re selecting a valid target, you can use this rule. If you do, until the end of the activation/counteraction, enemy operatives within 8\" of that friendly operative cannot be obscured. 13"
+        }
+    ]
+}
