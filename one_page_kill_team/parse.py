@@ -54,7 +54,7 @@ def parse_folder(input_path, output_path):
 
 # Example Usage
 if __name__ == "__main__":
-    pdf_folder = "../data/input_pdfs/"
+    pdf_folder = "./data/input_pdfs/"
     pdf_files = glob(os.path.join(pdf_folder, "*.pdf"))  # Get all PDFs
 
     # 📌 **Process each PDF**
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
         print(f"🛡️Saving txt for : {team_name}")
         # ✅ Save raw text (optional)
-        text_output_path = os.path.join("../data/text", f"{team_name}.txt")
+        text_output_path = os.path.join("./data/text", f"{team_name}.txt")
         with open(text_output_path, "w", encoding="utf-8") as text_file:
             text_file.write(text)
 
@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
 
         # ✅ Save JSON output
-        json_output_path = os.path.join("../data/json", f"{team_name}.json")
+        json_output_path = os.path.join("./data/json", f"{team_name}.json")
         with open(json_output_path, "w", encoding="utf-8") as json_file:
             json.dump(output, json_file, indent=4, ensure_ascii=False)
 

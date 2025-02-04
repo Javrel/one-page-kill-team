@@ -110,7 +110,7 @@
                 },
                 {
                     "name": "Iron Halo",
-                    "description": "Once per battle, when an attack dice inflicts Normal Dmg on this operative, you can ignore that inflicted damage. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, LEADER, SPACE MARINE CAPTAIN SPACE MARINE CAPTAIN 3 APL WOUNDS SAVE MOVE 6\" 3+ 15 40"
+                    "description": "Once per battle, when an attack dice inflicts Normal Dmg on this operative, you can ignore that inflicted damage."
                 }
             ]
         },
@@ -188,7 +188,7 @@
                 },
                 {
                     "name": "Chapter Veteran",
-                    "description": "At the end of the Select Operatives step, if this operative is selected for deployment, select one additional CHAPTER TACTIC for it to have for the battle. Unlike primary and secondary CHAPTER TACTICS, you don’t have to select the same one for each battle in a campaign or tournament. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, LEADER, ASSAULT INTERCESSOR, SERGEANT ASSAULT INTERCESSOR SERGEANT 3 APL WOUNDS SAVE MOVE 6\" 3+ 15 32 8"
+                    "description": "At the end of the Select Operatives step, if this operative is selected for deployment, select one additional CHAPTER TACTIC for it to have for the battle. Unlike primary and secondary CHAPTER TACTICS, you don’t have to select the same one for each battle in a campaign or tournament."
                 }
             ]
         },
@@ -273,7 +273,7 @@
                 },
                 {
                     "name": "Chapter Veteran",
-                    "description": "At the end of the Select Operatives step, if this operative is selected for deployment, select one additional CHAPTER TACTIC for it to have for the battle. Unlike primary and secondary CHAPTER TACTICS, you don’t have to select the same one for each battle in a campaign or tournament. ANGEL OF DEATH , IMPERIUM, APEPTUS ASTARTES, LEADER, INTERCESSOR, SERGEANT INTERCESSOR SERGEANT 3 APL WOUNDS SAVE MOVE 6\" 3+ 15 32"
+                    "description": "At the end of the Select Operatives step, if this operative is selected for deployment, select one additional CHAPTER TACTIC for it to have for the battle. Unlike primary and secondary CHAPTER TACTICS, you don’t have to select the same one for each battle in a campaign or tournament."
                 }
             ]
         },
@@ -305,7 +305,7 @@
             "abilities": [
                 {
                     "name": "Grenadier",
-                    "description": "This operative can use frag and krak grenades (see universal equipment). Doing so doesn’t count towards any limited uses you have (i.e. if you also select those grenades from equipment for other operatives). Whenever it’s doing so, improve the Hit stat of that weapon by 1. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ASSAULT INTERCESSOR, GRENADIER ASSAULT INTERCESSOR GRENADIER 3 APL WOUNDS SAVE MOVE 6\" 3+ 14 32 9"
+                    "description": "This operative can use frag and krak grenades (see universal equipment). Doing so doesn’t count towards any limited uses you have (i.e. if you also select those grenades from equipment for other operatives). Whenever it’s doing so, improve the Hit stat of that weapon by 1."
                 }
             ]
         },
@@ -386,7 +386,7 @@
                 {
                     "name": "OPTICS",
                     "cost": "1AP",
-                    "description": "Until the start of this operative’s next activation, whenever it’s shooting, enemy operatives cannot be obscured. This operative cannot perform this action while within control range of an enemy operative. ANGEL OF DEATH , IMPERIUM, ADEPTUS ASTARTES, ELIMINATOR, SNIPER ELIMINATOR SNIPER 3 APL WOUNDS SAVE MOVE 7\" 3+ 12 40 10"
+                    "description": "Until the start of this operative’s next activation, whenever it’s shooting, enemy operatives cannot be obscured. This operative cannot perform this action while within control range of an enemy operative."
                 },
                 {
                     "name": "Camo Cloak",

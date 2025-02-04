@@ -26,6 +26,7 @@ def load_json_as_string(file_path):
 
 def compare_json_files(reference_path, output_path):
     """Loads JSON files as strings and compares them directly."""
+    print(f"comparing {reference_path} to {output_path}")
     ref_str = load_json_as_string(reference_path)
     out_str = load_json_as_string(output_path)
 

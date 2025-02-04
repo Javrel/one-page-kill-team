@@ -38,3 +38,12 @@ def strip_control_chars(s: str) -> str:
     # optionally collapse multiple spaces
     clean = re.sub(r"\s+", " ", clean)
     return clean.strip()
+
+
+def remove_quotes_and_anything_after(text):
+    """Removes quotes in all caps, along with all lines after it."""
+    return re.sub(r"‘..[A-Z0-9:! ,.\n-].*", "", text, flags=re.S)
+
+
+def is_keyword_line(line):
+    return re.match(r"^[A-Z ,\-]+$", line) and "," in line

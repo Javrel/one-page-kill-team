@@ -1,6 +1,6 @@
 import re
 
-from one_page_kill_team.utils import strip_control_chars
+from one_page_kill_team.utils import strip_control_chars, remove_quotes_and_anything_after, is_keyword_line
 
 
 def extract_operatives_list(text):
@@ -38,7 +38,7 @@ def extract_operative_name_keywords_and_stats(operative_block):
 
     keyword_index, apl_index = None, None
     for i, line in enumerate(lines):
-        if re.match(r"^[A-Z ,\-]+$", line) and "," in line:
+        if is_keyword_line(line):
             keyword_index = i
         elif line == "APL":
             apl_index = i
@@ -61,6 +61,19 @@ def extract_operative_name_keywords_and_stats(operative_block):
     return operative_name, keywords, stats
 
 
+def clean_quotes_from_blocks(operative_blocks):
+    cleaned_blocks = []
+    for block in operative_blocks:
+        # Remove quotes formatted like the example
+        cleaned_block = remove_quotes_and_anything_after(block)
+
+        if cleaned_block != block:
+            print("🛠️ Removed a quote from an operative block.")
+
+        cleaned_blocks.append(cleaned_block)
+
+    return cleaned_blocks
+
 def extract_operative_blocks(text):
     """Extract full operative data blocks, including stats, weapons, and abilities."""
 
@@ -71,6 +84,8 @@ def extract_operative_blocks(text):
 
     operative_section = match.group(1).strip()
     operative_blocks = [block.strip() for block in re.split(r"(?=\nNAME\t)", operative_section)]
+    operative_blocks = clean_quotes_from_blocks(operative_blocks)
+
     all_operatives = []
 
     for operative_block in operative_blocks:
@@ -89,7 +104,7 @@ def extract_operative_blocks(text):
         weapons = []
         while parse_idx + 4 < len(lines):
             chunk = lines[parse_idx: parse_idx + 5]
-            if re.match(r"^[A-Za-z].*?:", chunk[0]) or (re.match(r"^[A-Z ,\-]+$", chunk[0]) and "," in chunk[0]):
+            if re.match(r"^\*?[A-Za-z].*?:", chunk[0]) or (re.match(r"^[A-Z ,\-]+$", chunk[0]) and "," in chunk[0]):
                 break
             weapons.append({"NAME": chunk[0], "ATK": chunk[1], "HIT": chunk[2], "DMG": chunk[3], "WR": chunk[4]})
             parse_idx += 5
@@ -98,13 +113,17 @@ def extract_operative_blocks(text):
         abilities = []
         current_ability = None
 
+
         for line in lines[parse_idx:]:
-            if ":" in line:
+            if is_keyword_line(line):
+                break
+            if re.match(r"^\*?[A-Z][A-Za-z*\- ]+:", line):  # Ensure ability names start with a capital letter
                 ability_name, ability_desc = map(str.strip, line.split(":", 1))
                 current_ability = {"name": ability_name, "description": ability_desc}
                 abilities.append(current_ability)
             elif current_ability:
-                current_ability["description"] += " " + line
+                # Append to the previous ability description instead of treating as a new one
+                current_ability["description"] += " " + line.strip()
 
         operative["abilities"] = postprocess_ap_abilities(abilities)
         all_operatives.append(operative)

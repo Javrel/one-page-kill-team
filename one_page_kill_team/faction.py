@@ -1,6 +1,6 @@
 import re
 
-from one_page_kill_team.utils import format_text
+from one_page_kill_team.utils import format_text, remove_quotes_and_anything_after
 
 
 def extract_faction_rules(text, team_name):
@@ -12,7 +12,9 @@ def extract_faction_rules(text, team_name):
         return {}  # Return empty if no faction rules found
 
     faction_text = match.group(1).strip()  # Get only the relevant section
-
+    print(faction_text)
+    faction_text = remove_quotes_and_anything_after(faction_text)
+    print(faction_text)
     # Find all section headers (fully capitalized lines without '»')
     section_pattern = re.compile(r"^(?!.*»)([A-Z\s]+)$", re.M)
 
