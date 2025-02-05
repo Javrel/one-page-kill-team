@@ -540,11 +540,7 @@
         },
         {
             "name": "COMBAT BLADES",
-            "description": "These blades are tough, thick and possess a razor-sharp cutting edge. Friendly PHOBOS STRIKE TEAM  operatives have the following melee weapon:"
-        },
-        {
-            "name": "ATK\t HIT\t DMG",
-            "description": "Combat blade 5 3+ 3/4"
+            "description": "These blades are tough, thick and possess a razor-sharp cutting edge. Friendly PHOBOS STRIKE TEAM  operatives have the following melee weapon: NAME ATK\t HIT\t DMG Combat blade 5 3+ 3/4"
         },
         {
             "name": "SPECIAL ISSUE AMMUNITION",

@@ -1,0 +1,427 @@
+{
+    "name": "HERNKYN YAEGIRS",
+    "archetypes": [
+        "SEEK & DESTROY",
+        "INFILTRATION"
+    ],
+    "faction_rules": {
+        "RESOURCEFUL": [
+            "Hernkyn Yaegirs are self-sufficiency specialists. They are also skilled warriors who, usually unsupported, embark upon missions equipped for countless contingencies. This allows them to adapt to hazardous environments and enemy actions with decisive speed",
+            "In the Ready step of each Strategy phase after the first, you gain Resourceful points determined by the number of friendly HERNKYN YAEGIR  operatives in the killzone that aren’t within control range of enemy operatives. At the end of each turning point, discard your Resourceful points."
+        ],
+        "RESOURCEFUL POINTS": [
+            "6+ 3-5 0-2 Whenever a friendly HERNKYN YAEGIR  operative that isn’t within control range of enemy operatives is activated, you can spend 1 of your Resourceful points to do one of the following:",
+            "•  Until the end of its activation, add 1 to its APL stat",
+            "•  It regains up to D3+1 lost wounds."
+        ],
+        "DAUNTLESS EXPLORERS": [
+            "The first of their Kindred to set foot on new worlds, Yaegirs are frequently deployed for extended periods and are experts in swiftly evaluating and exploiting their area of operations",
+            "STRATEGIC GAMBIT in the first turning point. Each friendly HERNKYN YAEGIR  operative wholly within your drop zone can immediately perform a free Reposition action. Each that does so must end that move wholly within 4\" of your drop zone."
+        ]
+    },
+    "strategy_ploys": {
+        "HIDDEN ENGAGEMENT": [
+            "Being experienced survivalists, Hernkyn Yaegirs are skilled hunters, well used to stalking and engaging their prey from the shadows",
+            "Whenever a friendly HERNKYN YAEGIR  operative is shooting, if it’s in cover from the target’s perspective, that friendly operative’s weapons have the Balanced weapon rule. Note that your opponent still determines the targeting lines for this (i.e. they decide which point of their operative’s base targeting lines are drawn from)."
+        ],
+        "MASTERFUL BLADEWORK": [
+            "Yaegirs are extensively trained in the use of plasma knives and other close combat weapons, wielding them with ruthless precision",
+            "Whenever a friendly HERNKYN YAEGIR  is fighting, or has a Conceal order and is retaliating, its weapons have the Balanced weapon rule."
+        ],
+        "TOUGH SURVIVALISTS": [
+            "A lifetime of frontier exploration coupled with their kind’s natural fortitude renders Hernkyn Yaegirs highly resistant to injury",
+            "The first time an attack dice inflicts damage on each friendly HERNKYN YAEGIR  operative during the turning point in the Resolve Attack Dice step, you can halve that inflicted damage (rounding up, to a minimum of 2)."
+        ],
+        "IN POSITION": [
+            "Hernkyn Yaegirs stalk their enemies with great patience, using the surrounding terrain to conceal themselves from prying eyes",
+            "Whenever a friendly HERNKYN YAEGIR  operative has a Conceal order and is in cover, it cannot be selected as a valid target, taking precedence over all other rules (e.g. Seek, Vantage terrain) except being within 2\"."
+        ]
+    },
+    "firefight_ploys": {
+        "STURDY": [
+            "Stocky and stalwart, Hernkyn Yaegirs grit their teeth and shrug off wounds that would fell other species",
+            "Use this firefight ploy when an operative is shooting a friendly HERNKYN YAEGIR  operative, when you collect your defence dice. Change the attacker’s retained critical successes to normal successes (any weapon rules they’ve already resolved aren’t affected, e.g. Piercing Crits)."
+        ],
+        "BONDS THAT BIND": [
+            "Squads of Hernkyn Yaegirs are exceptionally close-knit and operate with instinctive coordination",
+            "Use this firefight ploy when a friendly HERNKYN YAEGIR operative is activated. Select one other ready friendly HERNKYN YAEGIR  operative visible to and within 3\" of that operative. When that first friendly operative is expended, you can activate that other friendly operative before your opponent activates. When that other operative is expended, your opponent then activates as normal",
+            "Neither operative can be a BOMBAST operative if its Wroughtlock Negotiation STRATEGIC GAMBIT has been used this turning point."
+        ],
+        "NO KIN LEFT BEHIND": [
+            "All Kin desire to return to their Hold’s Ancestor Core upon their death",
+            "Hernkyn will fight tooth and nail to ensure that none of their fallen are left behind",
+            "Use this firefight ploy when a friendly HERNKYN YAEGIR operative is incapacitated. Before that operative is removed from the killzone, remove your Fallen Kin marker from the killzone (if any), then place it within that operative’s control range. That operative is then removed from the killzone as normal",
+            "Whenever a friendly HERNKYN YAEGIR  operative within 3\" of your Fallen Kin marker is shooting, fighting or retaliating, in the Roll Attack Dice step, you can retain one of your fails as a normal success instead of discarding it, or retain one of your normal successes as a critical success instead."
+        ],
+        "STALWART DEFENCE": [
+            "The Kin are steadfast and determined in defence. They maintain accurate and punishing fire even as their enemies close in",
+            "Use this firefight ploy when an enemy operative ends a move within control range of a friendly HERNKYN YAEGIR operative. Select one other friendly HERNKYN YAEGIR operative visible to and within 6\" of that friendly operative, but that isn’t itself within control range of enemy operatives. The selected operative can perform a free Shoot action. During that action:",
+            "•  It can target that enemy operative even though it’s within control range of a friendly operative",
+            "•  You cannot select any other enemy operative as a valid target",
+            "•  Worsen the Hit stat of its weapons by 1",
+            "•  You cannot select a frag or krak grenade, or a weapon with the Blast or x\" Devastating x weapon rule (i.e. Devastating with a distance)."
+        ]
+    },
+    "operatives": [
+        {
+            "name": "YAEGIR THEYN",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, LEADER, THEYN",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "9",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Bolt revolver",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 8\""
+                },
+                {
+                    "NAME": "Bolt shotgun (short range)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/4",
+                    "WR": "\u0007Range 6\""
+                },
+                {
+                    "NAME": "Bolt shotgun (long range)",
+                    "ATK": "4",
+                    "HIT": "5+",
+                    "DMG": "2/2",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Plasma knife",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Lethal 5+"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Veteran Adventurer",
+                    "description": "In the Ready step of each Strategy phase after the first, if this operative isn’t within control range of enemy operatives, you gain 1 Resourceful point."
+                },
+                {
+                    "name": "Outright Conviction",
+                    "description": "The first time this operative would be incapacitated during the battle, it’s not incapacitated, has 1 wound remaining and cannot be incapacitated for the remainder of the action. All remaining attack dice are discarded (including yours if this operative is fighting or retaliating)."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR BLADEKYN",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, BLADEKYN",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Throwing plasma knife",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 6\", Lethal 5+, Limited 1, Silent"
+                },
+                {
+                    "NAME": "Dual plasma knives",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Ceaseless, Lethal 5+"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Stalker",
+                    "description": "This operative can perform the Charge action while it has a Conceal order."
+                },
+                {
+                    "name": "Irrepressible Hardiness",
+                    "description": "If this operative is incapacitated during the Fight action, you can strike the enemy operative in that sequence with one of your unresolved successes before this operative is removed from the killzone."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR BOMBAST",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, BOMBAST",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Wroughtlock revolvers",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 9\", Ceaseless, Lethal 5+"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "2/3",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Wroughtlock Negotiation",
+                    "description": "STRATEGIC GAMBIT. This operative can immediately perform a free Shoot action (you can change its order to Engage to do so)."
+                },
+                {
+                    "name": "Brazen Killer",
+                    "description": "Whenever this operative incapacitates an enemy operative with its wroughtlock revolvers, roll one D6 separately for each other enemy operative visible to and within 2\" of that enemy operative: if the result is higher than that other enemy operative’s APL stat, subtract 1 from its APL stat until the end of its next activation."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR GUNNER",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, GUNNER",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "APM launcher (armour piercing)",
+                    "ATK": "5",
+                    "HIT": "4+",
+                    "DMG": "4/5",
+                    "WR": "\u0007Heavy (Reposition only), Piercing 1, Bipod*"
+                },
+                {
+                    "NAME": "APM launcher (breaching)",
+                    "ATK": "5",
+                    "HIT": "4+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Blast 2\", Heavy (Reposition only), Bipod*"
+                },
+                {
+                    "NAME": "APM launcher (high explosive)",
+                    "ATK": "5",
+                    "HIT": "4+",
+                    "DMG": "2/4",
+                    "WR": "\u0007Blast 3\", Heavy (Reposition only), Bipod*"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "2/3",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "*Bipod",
+                    "description": "Whenever this operative is shooting with this weapon, if it hasn’t moved during the activation, or if it’s a counteraction, this weapon has the Ceaseless weapon rule. Note this operative isn’t restricted from moving after shooting."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR IRONBRAEK",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, IRONBRAEK",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Bolt revolver",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 8\""
+                },
+                {
+                    "NAME": "Entrencher",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "3/4",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Minefield",
+                    "description": "You have five Minefield markers for the battle. On the reverse side, three of them are HY-Pex mines (see right) and two are blank. Set up all your Minefield markers as if they were one item of equipment. Each must be set up reverse-side down (their specifics aren’t revealed), more than 2\" from other markers, access points and Accessible terrain, and more than 6\" from your opponent’s drop zone and your other Minefield markers. Whenever this operative is readied, if it’s not within control range of enemy operatives, you can reset one of your flipped Minefield markers that’s within its control range (flip the marker back over again)."
+                },
+                {
+                    "name": "HY-Pex Mines",
+                    "description": "Whenever one of your reverse-side down Minefield markers is both within an enemy operative’s control range and not within a friendly HERNKYN YAEGIR  operative’s control range, flip the marker over. If it’s a blank, there’s no effect. If it’s a HY-Pex mine, inflict 3 damage on that enemy operative and roll one D6: if the result is less than that enemy operative’s Save stat, inflict additional damage on it equal to the dice result; regardless of the result, if it isn’t incapacitated, end its action (if any), even if that action’s effects aren’t fulfilled. If it cannot be placed, move it the minimum amount to do so. Regardless, that marker isn’t removed."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR RIFLEKYN",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, RIFLEKYN",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Magna-coil rifle (concealed)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/3",
+                    "WR": "\u0007Devastating 3, Heavy, Piercing 1, Silent, Concealed Position*"
+                },
+                {
+                    "NAME": "Magna-coil rifle (mobile)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/4",
+                    "WR": "\u0007Heavy (Reposition only), Piercing 1"
+                },
+                {
+                    "NAME": "Magna-coil rifle (stationary)",
+                    "ATK": "4",
+                    "HIT": "2+",
+                    "DMG": "3/3",
+                    "WR": "\u0007Devastating 3, Heavy, Piercing 1"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "2/3",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "*Concealed Position",
+                    "description": "This operative can only use this weapon the first time it’s performing the Shoot action during the battle. Weavewërke Cloak: Whenever an operative is shooting this operative: •\t\u0007Ignore the Saturate weapon rule. •\t\u0007If you can retain any cover saves, you can retain one additional cover save, or you can retain one cover save as a critical success instead. This isn’t cumulative with improved cover saves from Vantage terrain."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR TRACKER",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, TRACKER",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "SiNR handbow",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Silent"
+                },
+                {
+                    "NAME": "Throwing hatchet",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 6\", Limited 1, Rending, Silent"
+                },
+                {
+                    "NAME": "Hatchet",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/5",
+                    "WR": "\u0007-"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Pan Spectral Visor",
+                    "description": "Whenever this operative is shooting an operative within 6\" of it: •\t\u0007This operative’s weapons have the Seek Light weapon rule. •\t\u0007That operative cannot be obscured."
+                },
+                {
+                    "name": "Tracker",
+                    "description": "Whenever this operative is shooting against or fighting against an expended operative within 6\" of it, this operative’s weapons have the Punishing weapon rule."
+                }
+            ]
+        },
+        {
+            "name": "YAEGIR WARRIOR",
+            "keywords": "HERNKYN YAEGIR , LEAGUES OF VOTANN, WARRIOR",
+            "stats": {
+                "APL": "2",
+                "WOUNDS": "8",
+                "SAVE": "4+",
+                "MOVE": "5\""
+            },
+            "weapons": [
+                {
+                    "NAME": "Bolt revolver",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Range 8\""
+                },
+                {
+                    "NAME": "Bolt shotgun (short range)",
+                    "ATK": "4",
+                    "HIT": "3+",
+                    "DMG": "4/4",
+                    "WR": "\u0007Range 6\""
+                },
+                {
+                    "NAME": "Bolt shotgun (long range)",
+                    "ATK": "4",
+                    "HIT": "5+",
+                    "DMG": "2/2",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Fists",
+                    "ATK": "3",
+                    "HIT": "4+",
+                    "DMG": "2/3",
+                    "WR": "\u0007-"
+                },
+                {
+                    "NAME": "Plasma knife",
+                    "ATK": "4",
+                    "HIT": "4+",
+                    "DMG": "3/5",
+                    "WR": "\u0007Lethal 5+"
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Intrepid",
+                    "description": "Whenever you spend a Resourceful point for this operative, the following take precedence: •\t\u0007If you add 1 to its APL stat, it lasts until the start of its next activation instead. •\t\u0007If it regains lost wounds, it regains up to 4 instead."
+                }
+            ]
+        }
+    ],
+    "faction_equipment": [
+        {
+            "name": "PLASMA KNIVES",
+            "description": "The superheated edge of a plasma knife can slice through several inches of solid metal. Armour and bone are no match for such a cutting edge. Friendly HERNKYN YAEGIR  operatives have the following melee weapon. Note that some operatives already have this weapon but with better stats; in that instance, use the better version. NAME ATK\t HIT\t DMG Plasma knife 3 4+ 3/5 WR Lethal 5+"
+        },
+        {
+            "name": "STABILISED BOLT SHELLS",
+            "description": "Fitted with fin stabilisers, these specially crafted bolt shells are designed to enhance accuracy and lethality at extreme range. Up to twice per turning point, whenever a friendly HERNKYN YAEGIR  operative is performing the Shoot action and you select a bolt shotgun (long range), you can use this rule. If you do, until the end of that action, improve the Hit stat of that weapon by 1 and add 1 to both of its Dmg stats."
+        },
+        {
+            "name": "FIRESTORM BOLT SHELLS",
+            "description": "These bolt rounds are packed with shrapnel and phosphor, detonating on impact and emitting a cloud of lethal burning shards. Once per turning point, when a friendly HERNKYN YAEGIR operative is performing the Shoot action and you select a bolt shotgun (short range), you can use this rule. If you do, until the end of that action, that weapon has the Blast 1\" weapon rule. KV-CERAMIDE UNDERSUIT Hernkyn Yaegirs ordinarily wear only light armour. These thin but resilient semi-ceramic undersuits provide the wearer with an additional layer of protection. Whenever an operative is shooting a friendly HERNKYN YAEGIR  operative, if the ranged weapon in that sequence has the Blast or Torrent weapon rule, you can re-roll one of your defence dice. In addition, friendly HERNKYN YAEGIR operatives aren’t affected by the x\" Devastating x weapon rule (i.e. Devastating with a distance) unless they are the target during that sequence."
+        }
+    ]
+}

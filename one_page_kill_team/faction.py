@@ -79,16 +79,22 @@ def extract_faction_equipment(text):
         return print("No equipment match...")
 
 
+import re
+
+
 def parse_equipment_to_list(equipment_text):
     """
-    Splits equipment text by fully uppercase headings, returning a list of
-    dicts: [ {"name": "BRASS ADORNMENTS", "description": "..."},
-             {"name": "GORE MARKS",       "description": "..."},
-             ... ]
+    Splits equipment text by fully uppercase headings, excluding specific unwanted headers,
+    returning a list of dicts: [ {"name": "BRASS ADORNMENTS", "description": "..."},
+                                 {"name": "GORE MARKS",       "description": "..."},
+                                 ... ]
     """
 
     # Regex for lines that are ALL CAPS (and can contain spaces), e.g. BRASS ADORNMENTS
     heading_pattern = re.compile(r"^[A-Z][A-Z\s]+$", re.MULTILINE)
+
+    # Define headers to ignore
+    ignored_headers = {"ATK\t HIT\t DMG", "WR", "NAME"}
 
     equipment_entries = []
     current_heading = None
@@ -99,7 +105,7 @@ def parse_equipment_to_list(equipment_text):
         line_stripped = line.strip()
 
         # If this line is a new uppercase heading...
-        if heading_pattern.match(line_stripped):
+        if heading_pattern.match(line_stripped) and line_stripped not in ignored_headers:
             # If we already have a heading & buffer, store the previous equipment piece
             if current_heading and description_buffer:
                 equipment_entries.append({
