@@ -1,5 +1,9 @@
 {
     "name": "ANGELS OF DEATH",
+    "archetypes": [
+        "SEEK & DESTROY",
+        "SECURITY"
+    ],
     "faction_rules": {
         "CHAPTER TACTICS": [
             "Each Space Marine Chapter is a martial brotherhood with its own combat philosophies, suited to the unique skills and temperaments of its battle-brothers. These tenets of war may be clothed in esoteric rituals built up over thousands of years, but remain as brutally effective as when they were first laid down",
@@ -21,8 +25,7 @@
         "ASTARTES": [
             "These genetically modified superhumans are made for one purpose: war",
             "During each friendly ANGEL OF DEATH operative’s activation, it can perform either two Shoot actions or two Fight actions. If it’s two Shoot actions, a bolt weapon must be selected for at least one of them, and if it’s a bolt sniper rifle or heavy bolter, 1 additional AP must be spent for the second action if both actions are using that weapon",
-            "Each friendly ANGEL OF DEATH operative can counteract regardless of its order",
-            "6"
+            "Each friendly ANGEL OF DEATH operative can counteract regardless of its order."
         ]
     },
     "strategy_ploys": {

@@ -1,5 +1,9 @@
 {
     "name": "VESPID STINGWINGS",
+    "archetypes": [
+        "RECON",
+        "SEEK & DESTROY"
+    ],
     "faction_rules": {
         "NEUTRON CHARGE": [
             "Neutron weapons are powered by radioactive crystals from the Vespids’ home world. The harmonic thrumming of Vespids’ wings resonates within the crystals to charge them. When unleashed, even heavy combat armour can barely protect against this atom‑stripping energy charge",
@@ -21,8 +25,7 @@
         "FLY": [
             "The thrumming wings of the Vespids bear them aloft with speed and remarkable agility",
             "Whenever a friendly VESPID STINGWING  operative performs an action in which it moves, it can FLY. If it does, don’t move it",
-            "Instead, remove it from the killzone and set it back up wholly within a distance equal to its Move stat (or 3\" if it was a Dash) of its original location, measuring the horizontal distance only (in a killzone that uses the close quarters rules, e.g. Killzone: Gallowdark, this distance cannot be measured over or through Wall terrain, and that operative cannot be set up on the other side of an access point – in other words it cannot FLY through an open hatchway). Note that it gains no additional distance when performing the Charge action. It must be set up in a location it can be placed, and unless it’s the Charge action, it cannot be set up within control range of an enemy operative",
-            "6"
+            "Instead, remove it from the killzone and set it back up wholly within a distance equal to its Move stat (or 3\" if it was a Dash) of its original location, measuring the horizontal distance only (in a killzone that uses the close quarters rules, e.g. Killzone: Gallowdark, this distance cannot be measured over or through Wall terrain, and that operative cannot be set up on the other side of an access point – in other words it cannot FLY through an open hatchway). Note that it gains no additional distance when performing the Charge action. It must be set up in a location it can be placed, and unless it’s the Charge action, it cannot be set up within control range of an enemy operative."
         ]
     },
     "strategy_ploys": {

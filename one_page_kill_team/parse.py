@@ -5,13 +5,11 @@ from glob import glob
 import fitz  # PyMuPDF
 import json
 
-from one_page_kill_team.faction import extract_faction_rules, extract_faction_equipment
+from one_page_kill_team.faction import extract_faction_rules, extract_faction_equipment, extract_archetypes
 from one_page_kill_team.operatives import extract_operative_blocks
 from one_page_kill_team.ploys import extract_strategy_ploys, extract_firefight_ploys
 from one_page_kill_team.utils import extract_team_name
-import sys
 import os
-from pathlib import Path
 
 
 def parse_folder(input_path, output_path):
@@ -38,6 +36,7 @@ def parse_folder(input_path, output_path):
 
         # ✅ Extract Data
         output = {"name": team_name}
+        output["archetypes"] = extract_archetypes(text)
         output["faction_rules"] = extract_faction_rules(text, team_name)
         output["strategy_ploys"] = extract_strategy_ploys(text)
         output["firefight_ploys"] = extract_firefight_ploys(text)
@@ -77,6 +76,7 @@ if __name__ == "__main__":
 
         # ✅ Extract Data
         output = {"name": team_name}
+        output["archetypes"] = extract_archetypes(text)
         output["faction_rules"] = extract_faction_rules(text, team_name)
         output["strategy_ploys"] = extract_strategy_ploys(text)
         output["firefight_ploys"] = extract_firefight_ploys(text)

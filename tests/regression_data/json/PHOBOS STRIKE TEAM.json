@@ -1,5 +1,9 @@
 {
     "name": "PHOBOS STRIKE TEAM",
+    "archetypes": [
+        "RECON",
+        "INFILTRATION"
+    ],
     "faction_rules": {
         "TERROR": [
             "Dedicated terror troops, Space Marine Reivers utilise skull masks, shock grenades and vox-enhanced roars to terrify their victims",
@@ -49,8 +53,7 @@
         "STEALTH ASSAULT": [
             "The silenced servos of Phobos-pattern power armour allow a Space Marine to strike swiftly and overwhelm a surprised foe",
             "Use this firefight ploy when a friendly PHOBOS STRIKE TEAM operative that has a Conceal order is activated, is given an Engage order, performs the Charge and then the Fight action, and you’re resolving your first attack dice from this activation",
-            "After doing so, you can immediately resolve another of your attack dice (before your opponent). The operative cannot have performed any other actions during this activation (but can do so after resolving this ploy)",
-            "8"
+            "After doing so, you can immediately resolve another of your attack dice (before your opponent). The operative cannot have performed any other actions during this activation (but can do so after resolving this ploy)."
         ]
     },
     "operatives": [

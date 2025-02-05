@@ -2,6 +2,22 @@ import re
 
 from one_page_kill_team.utils import format_text, remove_quotes_and_anything_after
 
+def extract_archetypes(text):
+    match = re.search(r"ARCHETYPES\n(.+?)\nArchetypes", text, re.S)
+
+    if not match:
+        return []
+
+    archetypes_text = match.group(1).strip()
+    archetypes_text = re.sub(r'\s+', ' ', archetypes_text)
+
+    keywords = ["RECON", "SEEK & DESTROY", "SECURITY", "INFILTRATION"]
+
+    # Check which keywords exist in the text
+    existing_keywords = [keyword for keyword in keywords if keyword in archetypes_text]
+
+    return existing_keywords
+
 
 def extract_faction_rules(text, team_name):
     """Extracts faction rules sections by identifying fully capitalized headers."""
@@ -12,9 +28,8 @@ def extract_faction_rules(text, team_name):
         return {}  # Return empty if no faction rules found
 
     faction_text = match.group(1).strip()  # Get only the relevant section
-    print(faction_text)
     faction_text = remove_quotes_and_anything_after(faction_text)
-    print(faction_text)
+
     # Find all section headers (fully capitalized lines without '»')
     section_pattern = re.compile(r"^(?!.*»)([A-Z\s]+)$", re.M)
 
@@ -33,7 +48,8 @@ def extract_faction_rules(text, team_name):
             last_section = line
             content_lines = []
         else:
-            content_lines.append(line)
+            if not re.fullmatch(r"\d+", line):
+                content_lines.append(line)
 
     # Store the last section
     if last_section and content_lines:
@@ -48,14 +64,6 @@ def extract_faction_equipment(text):
     the next 'MARKER/TOKEN GUIDE' or 'UPDATE LOG' (or end of text).
     Returns the raw equipment text, or an empty string if none found.
     """
-    # Regex explanation:
-    #   1. Look for 'FACTION EQUIPMENT' literally.
-    #   2. Capture everything lazily (.*?) until
-    #   3. We see either:
-    #         - A line with 'MARKER/TOKEN GUIDE'
-    #         - A line with 'UPDATE LOG' (in case your file uses 'FELLGOR RAVAGERS: UPDATE LOG' or similar)
-    #         - OR the end of the entire text ($)
-
 
     pattern = re.compile(
         r"FACTION EQUIPMENT\s*\n"
