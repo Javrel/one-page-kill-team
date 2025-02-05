@@ -104,7 +104,9 @@ def extract_operative_blocks(text):
         weapons = []
         while parse_idx + 4 < len(lines):
             chunk = lines[parse_idx: parse_idx + 5]
-            if re.match(r"^\*?[A-Za-z].*?:", chunk[0]) or (re.match(r"^[A-Z ,\-]+$", chunk[0]) and "," in chunk[0]):
+            if (re.match(r"^\*?[A-Za-z].*?:", chunk[0])
+                    or (re.match(r"^[A-Z ,\-]+$", chunk[0]) and "," in chunk[0]))\
+                    or re.match(r"^[A-Z]+", chunk[0]):
                 break
             weapons.append({"NAME": chunk[0], "ATK": chunk[1], "HIT": chunk[2], "DMG": chunk[3], "WR": chunk[4]})
             parse_idx += 5
@@ -117,8 +119,8 @@ def extract_operative_blocks(text):
         for line in lines[parse_idx:]:
             if is_keyword_line(line):
                 break
-            if re.match(r"^\*?[A-Z][A-Za-z*\- ]+:", line):  # Ensure ability names start with a capital letter
-                ability_name, ability_desc = map(str.strip, line.split(":", 1))
+            if re.match(r"^\*?[A-Z][A-Za-z*\- ]+[:]", line):  # Ensure ability names start with a capital letter
+                ability_name, ability_desc = map(str.strip, re.split(r"[:]", line, 1))
                 current_ability = {"name": ability_name, "description": ability_desc}
                 abilities.append(current_ability)
             elif current_ability:

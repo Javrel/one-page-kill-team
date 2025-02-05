@@ -58,7 +58,7 @@ def extract_faction_rules(text, team_name):
     return sections
 
 
-def extract_faction_equipment(text):
+def extract_faction_equipment(text, team_name):
     """
     Extracts the Faction Equipment section, from 'FACTION EQUIPMENT' up to
     the next 'MARKER/TOKEN GUIDE' or 'UPDATE LOG' (or end of text).
@@ -67,9 +67,10 @@ def extract_faction_equipment(text):
 
     pattern = re.compile(
         r"FACTION EQUIPMENT\s*\n"
-        r"(.*?)(?=\nMARKER/TOKEN GUIDE|\nUPDATE LOG|$)",
+        rf"(.*?)(?=\nMARKER/TOKEN GUIDE|{team_name}: UPDATE .?LOG|$)",
         flags=re.DOTALL
     )
+
 
     match = re.search(pattern, text)
     if match:
@@ -117,7 +118,8 @@ def parse_equipment_to_list(equipment_text):
             description_buffer = []
         else:
             # Accumulate description text for the current heading
-            description_buffer.append(line_stripped)
+            if not re.fullmatch(r"\d+", line):
+                description_buffer.append(line_stripped)
 
     # Store the last heading found (if any)
     if current_heading and description_buffer:

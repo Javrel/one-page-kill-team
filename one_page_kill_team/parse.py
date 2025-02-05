@@ -41,7 +41,7 @@ def parse_folder(input_path, output_path):
         output["strategy_ploys"] = extract_strategy_ploys(text)
         output["firefight_ploys"] = extract_firefight_ploys(text)
         output["operatives"] = extract_operative_blocks(text)
-        output["faction_equipment"] = extract_faction_equipment(text)
+        output["faction_equipment"] = extract_faction_equipment(text, team_name)
 
         # ✅ Save JSON output
         json_output_path = os.path.join(output_path, f"{team_name}.json")
@@ -81,7 +81,7 @@ if __name__ == "__main__":
         output["strategy_ploys"] = extract_strategy_ploys(text)
         output["firefight_ploys"] = extract_firefight_ploys(text)
         output["operatives"] = extract_operative_blocks(text)
-        output["faction_equipment"] = extract_faction_equipment(text)
+        output["faction_equipment"] = extract_faction_equipment(text, team_name)
 
 
         # ✅ Save JSON output
