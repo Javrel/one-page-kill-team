@@ -133,51 +133,20 @@
                     "HIT": "3+",
                     "DMG": "3/4",
                     "WR": "\u0007PSYCHIC, Severe, Shock, Stun, Poison*"
-                },
-                {
-                    "NAME": "POISONOUS MIASMA\b",
-                    "ATK": "1AP",
-                    "HIT": "\u0007PSYCHIC. Select one enemy operative visible to and within 7\" of this",
-                    "DMG": "operative, or one enemy operative that’s a valid target for this operative.",
-                    "WR": "That enemy operative gains one of your Poison tokens (if it doesn’t"
-                },
-                {
-                    "NAME": "already have one). If it already has one, inflict 3 damage on that enemy",
-                    "ATK": "operative instead.",
-                    "HIT": "\u0007This operative cannot perform this action while within control range of an",
-                    "DMG": "enemy operative.",
-                    "WR": "PUTRESCENT VITALITY\b"
-                },
-                {
-                    "NAME": "1AP",
-                    "ATK": "\u0007PSYCHIC. Select one friendly operative visible to and within 3\" of this",
-                    "HIT": "operative, then roll 2D6: if the result is 7, the selected operative regains 7",
-                    "DMG": "lost wounds; otherwise, the selected operative regains lost wounds equal",
-                    "WR": "to the highest D6."
-                },
-                {
-                    "NAME": "\u0007This operative cannot perform this action while within control range of an",
-                    "ATK": "enemy operative, or more than once per turning point.",
-                    "HIT": "PLAGUE MARINE , CHAOS, HERETIC ASTARTES, PSYKER, MALIGNANT PLAGUECASTER",
-                    "DMG": "MALIGNANT",
-                    "WR": "PLAGUECASTER"
-                },
-                {
-                    "NAME": "3",
-                    "ATK": "APL",
-                    "HIT": "WOUNDS",
-                    "DMG": "SAVE",
-                    "WR": "MOVE"
-                },
-                {
-                    "NAME": "5\"",
-                    "ATK": "3+",
-                    "HIT": "14",
-                    "DMG": "32",
-                    "WR": "7"
                 }
             ],
-            "abilities": []
+            "abilities": [
+                {
+                    "name": "POISONOUS MIASMA",
+                    "cost": "1AP",
+                    "description": "PSYCHIC. Select one enemy operative visible to and within 7\" of this operative, or one enemy operative that’s a valid target for this operative. That enemy operative gains one of your Poison tokens (if it doesn’t already have one). If it already has one, inflict 3 damage on that enemy operative instead. This operative cannot perform this action while within control range of an enemy operative."
+                },
+                {
+                    "name": "PUTRESCENT VITALITY",
+                    "cost": "1AP",
+                    "description": "PSYCHIC. Select one friendly operative visible to and within 3\" of this operative, then roll 2D6: if the result is 7, the selected operative regains 7 lost wounds; otherwise, the selected operative regains lost wounds equal to the highest D6. This operative cannot perform this action while within control range of an enemy operative, or more than once per turning point."
+                }
+            ]
         },
         {
             "name": "PLAGUE MARINE BOMBARDIER",
@@ -233,7 +202,13 @@
                     "WR": "\u0007Brutal, Severe, Shock, Poison*"
                 }
             ],
-            "abilities": []
+            "abilities": [
+                {
+                    "name": "FLAIL",
+                    "cost": "1AP",
+                    "description": "Inflict D3+2 damage on each other operative that’s both visible to and within 2\" of this operative. Roll separately for each: if it’s an enemy operative, if the D3 result is a 3, that enemy operative also gains one of your Poison tokens (if it doesn’t already have one). This operative cannot perform this action while it has a Conceal order, or during an activation in which it performed more than one Fight action, and it cannot perform more than one Fight action during an activation in which it performs this action."
+                }
+            ]
         },
         {
             "name": "PLAGUE MARINE HEAVY GUNNER",

@@ -106,7 +106,7 @@ def extract_operative_blocks(text):
             chunk = lines[parse_idx: parse_idx + 5]
             if (re.match(r"^\*?[A-Za-z].*?:", chunk[0])
                     or (re.match(r"^[A-Z ,\-]+$", chunk[0]) and "," in chunk[0]))\
-                    or re.match(r"^[A-Z]+", chunk[0]):
+                    or re.match(r"^[A-Z ]+", chunk[0]):
                 break
             weapons.append({"NAME": chunk[0], "ATK": chunk[1], "HIT": chunk[2], "DMG": chunk[3], "WR": chunk[4]})
             parse_idx += 5
@@ -119,7 +119,7 @@ def extract_operative_blocks(text):
         for line in lines[parse_idx:]:
             if is_keyword_line(line):
                 break
-            if re.match(r"^\*?[A-Z][A-Za-z*\- ]+[:]", line):  # Ensure ability names start with a capital letter
+            if re.match(r"^\*?[A-Z][A-Za-z*\- ]+[:]", line):  # Ensure ability names start with a capital letter
                 ability_name, ability_desc = map(str.strip, re.split(r"[:]", line, 1))
                 current_ability = {"name": ability_name, "description": ability_desc}
                 abilities.append(current_ability)
@@ -135,23 +135,33 @@ def extract_operative_blocks(text):
 
 def postprocess_ap_abilities(abilities):
     """Extracts AP-based abilities and organizes them separately."""
-    new_abilities = []
-    pattern = re.compile(r'([A-Z\s]+)\s+(\d+AP)\s+(.*?)(?=[A-Z\s]+\d+AP|$)', flags=re.DOTALL)
+    fixed_abilities = []
+    pattern_1 = re.compile(r'([A-Z\s]+)\s+(\d+AP)\s+(.*?)(?=[A-Z\s]+\d+AP|$)', flags=re.DOTALL)
+    pattern_2 = re.compile(r'(\d+AP)\s+(.*?)(?=[A-Z\s]+\d+AP|$)', flags=re.DOTALL)
 
     for ability in abilities:
-        desc = strip_control_chars(ability["description"])
-        ap_subabilities = []
+        desc = strip_control_chars(ability["description"]).strip()
 
-        for match in pattern.finditer(desc):
-            sub_ability = {"name": match.group(1).strip(), "cost": match.group(2).strip(),
-                           "description": match.group(3).strip()}
-            ap_subabilities.append(sub_ability)
+        # Try first pattern
+        match_sub = pattern_1.match(desc)
+        match_fix = pattern_2.match(desc)
+        if match_sub:
+            sub_ability = {
+                "name": match_sub.group(1).strip(),
+                "cost": match_sub.group(2).strip(),
+                "description": match_sub.group(3).strip(),
+            }
+            ability["description"] = pattern_1.sub('', desc).strip()  # Remove matched text
+            fixed_abilities.append(ability)  # Keep cleaned ability
+            fixed_abilities.append(sub_ability)
+        elif match_fix:
+                fixed_ability = {
+                    "name": ability["name"].strip(),
+                    "cost": match_fix.group(1).strip(),
+                    "description": match_fix.group(2).strip(),
+                }
+                fixed_abilities.append(fixed_ability)  # Only add extracted ability for pattern 2
+        else:
+            fixed_abilities.append(ability)
 
-        if ap_subabilities:
-            desc_cleaned = pattern.sub('', desc).strip()
-            ability["description"] = desc_cleaned
-            new_abilities.extend(ap_subabilities)
-
-        new_abilities.append(ability)
-
-    return new_abilities
+    return fixed_abilities

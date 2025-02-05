@@ -150,7 +150,13 @@
                     "WR": "\u0007-"
                 }
             ],
-            "abilities": []
+            "abilities": [
+                {
+                    "name": "HELIX GAUNTLET",
+                    "cost": "1AP",
+                    "description": "Select one friendly PHOBOS STRIKE TEAM operative within this operative’s control range to regain up to D3+3 lost wounds. It cannot be an operative that the Medic! rule was used on during this turning point. This operative cannot perform this action while within control range of an enemy operative."
+                }
+            ]
         },
         {
             "name": "INFILTRATOR SABOTEUR",
@@ -254,13 +260,13 @@
             ],
             "abilities": [
                 {
+                    "name": "Voxbreak",
+                    "description": "Whenever an enemy operative is within 6\" of this operative, your opponent cannot re-roll their attack or defence dice for that operative."
+                },
+                {
                     "name": "AUSPEX SCAN",
                     "cost": "1AP",
                     "description": "Until the start of this operative’s next activation or until it’s incapacitated (whichever comes first), whenever a friendly PHOBOS STRIKE TEAM operative is shooting an enemy operative within 8\" of this operative, that enemy operative cannot be obscured; if that friendly operative is an INCURSOR, its ranged weapons also have the Seek Light weapon rule. This operative cannot perform this action while within control range of an enemy operative."
-                },
-                {
-                    "name": "Voxbreak",
-                    "description": "Whenever an enemy operative is within 6\" of this operative, your opponent cannot re-roll their attack or defence dice for that operative."
                 }
             ]
         },

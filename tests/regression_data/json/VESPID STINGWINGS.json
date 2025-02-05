@@ -121,13 +121,8 @@
             ],
             "abilities": [
                 {
-                    "name": "AERIAL GUIDANCE",
-                    "cost": "1AP",
-                    "description": "SUPPORT. Until the start of this operative’s next activation, whenever another friendly VESPID STINGWING operative visible to and within 6\" of this operative is shooting an enemy operative visible to this operative, that friendly operative’s ranged weapons have the Lethal 5+ and Saturate weapon rules. This has no effect while this operative is within control range of an enemy operative. This operative cannot perform this action while within control range of an enemy operative."
-                },
-                {
                     "name": "Evasive Drone",
-                    "description": "•This operative cannot perform any actions other than Aerial Guidance, Charge, Dash, Fall Back, Fight and Reposition. •Whenever determining control of an objective marker, treat this operative’s APL stat as 1 lower. Note this isn’t a change to its APL stat, so any changes are cumulative with this. •Whenever determining what’s visible to this operative, the round disc at the top of the miniature is its head. •Whenever this operative has a Conceal order and is in cover, it cannot be selected as a valid target, taking precedence over all other rules (e.g. Seek, Vantage terrain) except being within 2\". •Whenever an operative is shooting this operative, ignore the Piercing weapon rule."
+                    "description": " •\t\u0007This operative cannot perform any actions other than Aerial Guidance, Charge, Dash, Fall Back, Fight and Reposition. •\t\u0007Whenever determining control of an objective marker, treat this operative’s APL stat as 1 lower. Note this isn’t a change to its APL stat, so any changes are cumulative with this. •\t\u0007Whenever determining what’s visible to this operative, the round disc at the top of the miniature is its head. •\t\u0007Whenever this operative has a Conceal order and is in cover, it cannot be selected as a valid target, taking precedence over all other rules (e.g. Seek, Vantage terrain) except being within 2\". •\t\u0007Whenever an operative is shooting this operative, ignore the Piercing weapon rule. AERIAL GUIDANCE 1AP \u0007SUPPORT. Until the start of this operative’s next activation, whenever another friendly VESPID STINGWING  operative visible to and within 6\" of this operative is shooting an enemy operative visible to this operative, that friendly operative’s ranged weapons have the Lethal 5+ and Saturate weapon rules. This has no effect while this operative is within control range of an enemy operative. \u0007This operative cannot perform this action while within control range of an enemy operative."
                 }
             ]
         },

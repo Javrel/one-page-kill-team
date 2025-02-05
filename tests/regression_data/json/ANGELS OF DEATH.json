@@ -386,13 +386,13 @@
             ],
             "abilities": [
                 {
+                    "name": "Camo Cloak",
+                    "description": "Whenever an operative is shooting this operative, ignore the Saturate weapon rule. This operative has the Stealthy CHAPTER TACTIC. If you selected that CHAPTER TACTIC, you can do both of its options (i.e. retain two cover saves – one normal and one critical success)."
+                },
+                {
                     "name": "OPTICS",
                     "cost": "1AP",
                     "description": "Until the start of this operative’s next activation, whenever it’s shooting, enemy operatives cannot be obscured. This operative cannot perform this action while within control range of an enemy operative."
-                },
-                {
-                    "name": "Camo Cloak",
-                    "description": "Whenever an operative is shooting this operative, ignore the Saturate weapon rule. This operative has the Stealthy CHAPTER TACTIC. If you selected that CHAPTER TACTIC, you can do both of its options (i.e. retain two cover saves – one normal and one critical success)."
                 }
             ]
         },
