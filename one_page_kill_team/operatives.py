@@ -11,7 +11,7 @@ def extract_operatives_list(text):
         return {}
 
     operatives_text = match.group(1).strip()
-    section_pattern = re.compile(r"^([A-Z\s]+)$", re.M)
+    section_pattern = re.compile(r"^([A-Z‑\s]+)$", re.M)
     operatives = {}
     last_operative = None
     content_lines = []

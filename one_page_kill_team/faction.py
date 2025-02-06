@@ -31,7 +31,7 @@ def extract_faction_rules(text, team_name):
     faction_text = remove_quotes_and_anything_after(faction_text)
 
     # Find all section headers (fully capitalized lines without '»')
-    section_pattern = re.compile(r"^(?!.*»)([A-Z\s]+)$", re.M)
+    section_pattern = re.compile(r"^(?!.*»)([A-Z’\s]+)$", re.M)
 
     sections = {}
     last_section = None
