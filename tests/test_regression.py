@@ -43,12 +43,13 @@ def test_regression(temp_output_dir):
     pdf_files = list(PDF_FOLDER.glob("*.pdf"))
     if not pdf_files:
         pytest.fail(f"🚨 No PDFs found in: {PDF_FOLDER.resolve()}")
-
+    teams = []
     for pdf_path in pdf_files:
 
         doc = fitz.open(pdf_path)
         text = "\n".join([page.get_text() for page in doc])
         team_name = extract_team_name(text)  # Extract team name
+        teams.append(team_name)
         assert team_name, f"❌ Could not extract team name from: {pdf_path}"
 
         ref_file = REFERENCE_FOLDER / f"{team_name}.json"
